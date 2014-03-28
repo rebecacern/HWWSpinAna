@@ -14,8 +14,8 @@ void plot(TString fname, TString ffolder){
   TFile *f=new TFile(ffolder+"/higgsCombine"+fname+".MultiDimFit.mH125.6.123456.root");
   
   TTree *t=(TTree*)f->Get("limit");
-  //t->Draw("2*deltaNLL:x", "deltaNLL > 0","PL");
-  t->Draw("2*deltaNLL:CMS_zz4l_Gamma", "deltaNLL > 0","PL");
+  t->Draw("2*deltaNLL:x", "deltaNLL > 0","PL");
+  //t->Draw("2*deltaNLL:CMS_zz4l_fg4", "deltaNLL > 0","PL");
 
   TGraph *gr0 = (TGraph*) gROOT->FindObject("Graph")->Clone();
   gr0->SetName("Exp1D");
