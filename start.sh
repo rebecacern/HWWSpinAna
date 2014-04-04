@@ -6,7 +6,7 @@ echo "[Info:] copying proper PDF class to your CMSSW installation"
 
 	scp basic/HZZ4L_RooSpinZeroPdf.cc ../HiggsAnalysis/CombinedLimit/src/.
 	scp basic/HZZ4L_RooSpinZeroPdf.h ../HiggsAnalysis/CombinedLimit/interface/.
-	scp basic/ SpinZeroStructure.py ../HiggsAnalysis/CombinedLimit/python/.
+	scp basic/SpinZeroStructure.py ../HiggsAnalysis/CombinedLimit/python/.
 
 pushd ../
 

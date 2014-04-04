@@ -14,8 +14,8 @@ void plot(TString fname, TString ffolder){
   TFile *f=new TFile(ffolder+"/higgsCombine"+fname+".MultiDimFit.mH125.6.123456.root");
   
   TTree *t=(TTree*)f->Get("limit");
-  t->Draw("2*deltaNLL:x", "deltaNLL > 0","PL");
-  //t->Draw("2*deltaNLL:CMS_zz4l_fg4", "deltaNLL > 0","PL");
+  //t->Draw("2*deltaNLL:x", "deltaNLL > 0","PL");
+  t->Draw("2*deltaNLL:CMS_zz4l_fg4", "deltaNLL > 0","PL");
 
   TGraph *gr0 = (TGraph*) gROOT->FindObject("Graph")->Clone();
   gr0->SetName("Exp1D");
@@ -28,7 +28,7 @@ void plot(TString fname, TString ffolder){
     {
       TFile *f1=new TFile("higgsCombine1D_observed.MultiDimFit.mH125.6.root");
       TTree *t1=(TTree*)f1->Get("limit");
-      t1->Draw("2*deltaNLL:CMS_zz4l_Gamma", "deltaNLL > 0","PL");
+      t1->Draw("2*deltaNLL:x", "deltaNLL > 0","PL");
 
       TGraph *gr1 = (TGraph*) gROOT->FindObject("Graph")->Clone();
       gr1->SetName("Obs1D");
@@ -78,7 +78,7 @@ void plot(TString fname, TString ffolder){
   oneSig->SetTextColor(kRed);
   oneSig->SetBorderSize(0);
   oneSig->AddText("1#sigma"); 
-  oneSig->Draw();
+  //oneSig->Draw();
   
   TPaveText *twoSig = new TPaveText(0.85,0.44,0.9,0.48,"NDC");
   twoSig->SetFillColor(0);
@@ -86,20 +86,20 @@ void plot(TString fname, TString ffolder){
   twoSig->SetTextColor(kRed);
   twoSig->SetBorderSize(0);
   twoSig->AddText("2#sigma"); 
-  twoSig->Draw();
+  //twoSig->Draw();
   
   TLine *l1=new TLine();
   l1->SetLineStyle(9);
   l1->SetLineWidth(2);
   l1->SetLineColor(kRed);
-  l1->DrawLine(0,1.0,1.0,1.0);
-  l1->Draw("same");
+ // l1->DrawLine(-1,1.0,1.0,1.0);
+  //l1->Draw("same");
   TLine *l2=new TLine();
   l2->SetLineStyle(9);
   l2->SetLineWidth(2);
   l2->SetLineColor(kRed);
-  l2->DrawLine(0,4.,1.0,4.);
-  l2->Draw("same");
+ // l2->DrawLine(0,4.,1.0,4.);
+ // l2->Draw("same");
 
   c1->SaveAs(ffolder+"/"+fname+".png");
   

@@ -7,9 +7,9 @@ using namespace RooFit;
 
 void import(int cem = 8){
   
-  gROOT->ProcessLine("gSystem->AddIncludePath(\"-I$ROOFITSYS/include/\")");
-  gROOT->ProcessLine("gSystem->Load(\"libRooFit\")");
-  gROOT->ProcessLine("gSystem->Load(\"libHiggsAnalysisCombinedLimit.so\")");
+  //gROOT->ProcessLine("gSystem->AddIncludePath(\"-I$ROOFITSYS/include/\")");
+  //gROOT->ProcessLine("gSystem->Load(\"libRooFit\")");
+  //gROOT->ProcessLine("gSystem->Load(\"libHiggsAnalysisCombinedLimit.so\")");
  
   TString energy = "8";
   if (cem !=8) energy = "7";
