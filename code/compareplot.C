@@ -22,7 +22,7 @@ void compareplot(){
   
   TFile *_file0 = TFile::Open(myRootFile);
  
-  TString sampleLabel[4] =     {"SM", "0PM", "0m", "0Mix"};
+  TString sampleLabel[4] =     {"SM", "0PM", "0M", "Mix"};
 
 
   const int nPlots = 9;
@@ -32,6 +32,7 @@ void compareplot(){
 
   TH1D*  h0[2][nPlots];
   TH1D*  h1[2][nPlots];
+  TH1D*  h2[4][nPlots];
   
   for (const int iPlot = 0; iPlot < nPlots; iPlot++){
     cout << cutLabel[iPlot] << endl;
@@ -40,6 +41,10 @@ void compareplot(){
           
     h1[0][iPlot] = (TH1D*) _file0->Get("histo_" + cutLabel[iPlot]+"_"+sampleLabel[0]+"_8TeV");
     h1[1][iPlot] = (TH1D*) _file0->Get("histo_" + cutLabel[iPlot]+"_"+sampleLabel[1]+"_8TeV");
+    
+    for (int i =0; i<4; i++){
+      h2[i][iPlot] = (TH1D*) _file0->Get("histo_" + cutLabel[iPlot]+"_"+sampleLabel[i]+"_8TeV");
+    }
      
         
     TCanvas *c1 = new TCanvas();
@@ -56,7 +61,66 @@ void compareplot(){
     h0[1][iPlot]->Draw("ehisto, sames");
     h0[0][iPlot]->GetYaxis()->SetRangeUser(0, max);
     h0[0][iPlot]->GetXaxis()->SetTitle(cutTitle[iPlot]);
+    leg = new TLegend(0.60,0.80,0.99,0.99);
+    leg->SetFillStyle(1001);
+    leg->SetFillColor(kWhite);
+    leg->SetBorderSize(1);
+    leg->AddEntry(h0[0][iPlot], "Official SM sample", "l");
+    leg->AddEntry(h0[1][iPlot], "JHU Gen SM sample", "l");
+    leg->Draw();
     c1->SaveAs("plots/before_"+ cutLabel[iPlot]+ "_8TeV.png");
+    
+    TCanvas *c1 = new TCanvas();
+    h1[0][iPlot]->SetLineColor(kRed);
+    h1[0][iPlot]->SetMarkerColor(kRed);
+    h1[0][iPlot]->SetMarkerStyle(20);
+    h1[0][iPlot]->SetMarkerSize(1);
+    h1[1][iPlot]->SetMarkerStyle(20);
+    h1[1][iPlot]->SetMarkerSize(1);
+    h1[0][iPlot]->SetNormFactor(1);
+    h1[1][iPlot]->SetNormFactor(1);
+    double max = 1.3*(TMath::Max(h1[0][iPlot]->GetMaximum(), h1[1][iPlot]->GetMaximum()));
+    h1[0][iPlot]->Draw("ehisto");
+    h1[1][iPlot]->Draw("ehisto, sames");
+    h1[0][iPlot]->GetYaxis()->SetRangeUser(0, max);
+    h1[0][iPlot]->GetXaxis()->SetTitle(cutTitle[iPlot]);
+    leg = new TLegend(0.60,0.80,0.99,0.99);
+    leg->SetFillStyle(1001);
+    leg->SetFillColor(kWhite);
+    leg->SetBorderSize(1);
+    leg->AddEntry(h1[0][iPlot], "Official SM sample", "l");
+    leg->AddEntry(h1[1][iPlot], "JHU Gen SM sample", "l");
+    leg->Draw();
+    c1->SaveAs("plots/"+ cutLabel[iPlot]+ "_8TeV.png");
+    
+    for (int i = 2; i<4; i++){
+    
+      TCanvas *c1 = new TCanvas();
+      h2[0][iPlot]->SetLineColor(kRed);
+      h2[0][iPlot]->SetMarkerColor(kRed);
+      h2[0][iPlot]->SetMarkerStyle(20);
+      h2[0][iPlot]->SetMarkerSize(1);
+      h2[i][iPlot]->SetMarkerStyle(20);
+      h2[i][iPlot]->SetMarkerSize(1);
+      h2[0][iPlot]->SetNormFactor(1);
+      h2[i][iPlot]->SetNormFactor(1);
+      double max = 1.3*(TMath::Max(h2[0][iPlot]->GetMaximum(), h2[i][iPlot]->GetMaximum()));
+      h2[0][iPlot]->Draw("ehisto");
+      h2[i][iPlot]->Draw("ehisto, sames");
+      h2[0][iPlot]->GetYaxis()->SetRangeUser(0, max);
+      h2[0][iPlot]->GetXaxis()->SetTitle(cutTitle[iPlot]);
+      leg = new TLegend(0.60,0.80,0.99,0.99);
+      leg->SetFillStyle(1001);
+      leg->SetFillColor(kWhite);
+      leg->SetBorderSize(1);
+      leg->AddEntry(h2[0][iPlot], "SM", "l");
+      leg->AddEntry(h2[i][iPlot], sampleLabel[i], "l");
+      leg->Draw();
+      c1->SaveAs("plots/"+ cutLabel[iPlot]+ "_"+sampleLabel[i]+"_8TeV.png");
+     
+    
+    
+    }
     
   }
 

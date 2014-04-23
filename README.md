@@ -103,6 +103,15 @@ sh run.sh
 should run out of the box and produce some plots inside "plots", you'll need a
 "rootfiles" folder and a "plots" folder.
 
+Then for the comparison plots, just run:
+
+root.exe compareplot.C
+
+
+
+---------------------------------------------
+
+
 Location of the stuff (MIT):
 
 datacards:
