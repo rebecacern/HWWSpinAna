@@ -53,10 +53,47 @@ void chain(int nsel = 0, int cem = 8){
   char title[300];
   
   sprintf(title,"histo_%s_%dTeV",plotName, cem);
-  TH2F* histo = new TH2F( title, " ", 6, 60, 120, 6, 10, 100);
+  TH2F* histo = new TH2F( title, " ", 6, 60, 120, 6, 12, 100);
   histo->Sumw2();
   
+  //distributions  
+  sprintf(title,"histo_lep1pt_%s_%dTeV",plotName, cem);
+  TH1F* histo_lep1pt = new TH1F( title, " ", 10, 0, 100);
+  histo_lep1pt->Sumw2();
   
+  sprintf(title,"histo_lep2pt_%s_%dTeV",plotName, cem);
+  TH1F* histo_lep2pt = new TH1F( title, " ", 10, 0, 100);
+  histo_lep2pt->Sumw2();
+  
+  sprintf(title,"histo_lep1eta_%s_%dTeV",plotName, cem);
+  TH1F* histo_lep1eta = new TH1F( title, " ", 10, -2.5, 2.5);
+  histo_lep1eta->Sumw2();
+  
+  sprintf(title,"histo_lep2eta_%s_%dTeV",plotName, cem);
+  TH1F* histo_lep2eta = new TH1F( title, " ", 10, -2.5, 2.5);
+  histo_lep2eta->Sumw2();
+  
+  sprintf(title,"histo_mll_%s_%dTeV",plotName, cem);
+  TH1F* histo_mll = new TH1F( title, " ", 10, 0, 200);
+  histo_mll->Sumw2();
+  
+  sprintf(title,"histo_mt_%s_%dTeV",plotName, cem);
+  TH1F* histo_mt = new TH1F( title, " ", 15, 0, 300);
+  histo_mt->Sumw2();
+  
+  sprintf(title,"histo_ptll_%s_%dTeV",plotName, cem);
+  TH1F* histo_ptll = new TH1F( title, " ", 10, 0, 100);
+  histo_ptll->Sumw2();
+  
+  sprintf(title,"histo_met_%s_%dTeV",plotName, cem);
+  TH1F* histo_met = new TH1F( title, " ", 10, 0, 100);
+  histo_met->Sumw2();
+  
+  sprintf(title,"histo_phill_%s_%dTeV",plotName, cem);
+  TH1F* histo_phill = new TH1F( title, " ", 10, 0, 180);
+  histo_phill->Sumw2();
+  
+  //To business
   int nSample=sample.tree_->GetEntries();
   
   cout << nSample << endl;
@@ -65,6 +102,17 @@ void chain(int nsel = 0, int cem = 8){
     sample.tree_->GetEntry(i); 
     double weight = 1;
     if (sample.dstype_ != SmurfTree::data) weight = lumi*sample.scale1fb_*sample.sfWeightPU_*sample.sfWeightEff_*sample.sfWeightTrig_;
+    
+    histo_lep1pt->Fill(sample.lep1_.Pt(), weight);
+    histo_lep2pt->Fill(sample.lep2_.Pt(), weight);
+    histo_lep1eta->Fill(sample.lep1_.Eta(), weight);
+    histo_lep2eta->Fill(sample.lep2_.Eta(), weight);
+    histo_mll->Fill(sample.dilep_.M(), weight);
+    histo_mt->Fill(sample.mt_, weight);
+    histo_ptll->Fill(sample.dilep_.Pt(), weight);
+    histo_met->Fill(sample.met_, weight);
+    histo_phill->Fill(fabs(sample.dPhi_*180/3.1415), weight);
+
     
     //HWW slection mock-off
     if (sample.njets_ !=1) continue;

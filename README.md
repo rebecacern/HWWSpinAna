@@ -102,3 +102,17 @@ sh run.sh
 
 should run out of the box and produce some plots inside "plots", you'll need a
 "rootfiles" folder and a "plots" folder.
+
+Location of the stuff (MIT):
+
+datacards:
+
+/data/smurf/ceballos/inputLimits/ana_spin
+
+ntuples:
+
+/data/smurf/data/Run2012_Summer12_SmurfV9_53X/mitf-alljets_mva
+
+Naming check:
+
+http://t3serv001.mit.edu/~cmsprod/filefi/032/Productions.mc
