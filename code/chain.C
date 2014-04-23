@@ -57,6 +57,42 @@ void chain(int nsel = 0, int cem = 8){
   histo->Sumw2();
   
   //distributions  
+  sprintf(title,"histo_before_lep1pt_%s_%dTeV",plotName, cem);
+  TH1F* histo_before_lep1pt = new TH1F( title, " ", 10, 0, 100);
+  histo_before_lep1pt->Sumw2();
+  
+  sprintf(title,"histo_before_lep2pt_%s_%dTeV",plotName, cem);
+  TH1F* histo_before_lep2pt = new TH1F( title, " ", 10, 0, 100);
+  histo_before_lep2pt->Sumw2();
+  
+  sprintf(title,"histo_before_lep1eta_%s_%dTeV",plotName, cem);
+  TH1F* histo_before_lep1eta = new TH1F( title, " ", 10, -2.5, 2.5);
+  histo_before_lep1eta->Sumw2();
+  
+  sprintf(title,"histo_before_lep2eta_%s_%dTeV",plotName, cem);
+  TH1F* histo_before_lep2eta = new TH1F( title, " ", 10, -2.5, 2.5);
+  histo_before_lep2eta->Sumw2();
+  
+  sprintf(title,"histo_before_mll_%s_%dTeV",plotName, cem);
+  TH1F* histo_before_mll = new TH1F( title, " ", 10, 0, 200);
+  histo_before_mll->Sumw2();
+  
+  sprintf(title,"histo_before_mt_%s_%dTeV",plotName, cem);
+  TH1F* histo_before_mt = new TH1F( title, " ", 15, 0, 300);
+  histo_before_mt->Sumw2();
+  
+  sprintf(title,"histo_before_ptll_%s_%dTeV",plotName, cem);
+  TH1F* histo_before_ptll = new TH1F( title, " ", 10, 0, 100);
+  histo_before_ptll->Sumw2();
+  
+  sprintf(title,"histo_before_met_%s_%dTeV",plotName, cem);
+  TH1F* histo_before_met = new TH1F( title, " ", 10, 0, 100);
+  histo_before_met->Sumw2();
+  
+  sprintf(title,"histo_before_phill_%s_%dTeV",plotName, cem);
+  TH1F* histo_before_phill = new TH1F( title, " ", 10, 0, 180);
+  histo_before_phill->Sumw2();
+  
   sprintf(title,"histo_lep1pt_%s_%dTeV",plotName, cem);
   TH1F* histo_lep1pt = new TH1F( title, " ", 10, 0, 100);
   histo_lep1pt->Sumw2();
@@ -92,7 +128,6 @@ void chain(int nsel = 0, int cem = 8){
   sprintf(title,"histo_phill_%s_%dTeV",plotName, cem);
   TH1F* histo_phill = new TH1F( title, " ", 10, 0, 180);
   histo_phill->Sumw2();
-  
   //To business
   int nSample=sample.tree_->GetEntries();
   
@@ -103,15 +138,15 @@ void chain(int nsel = 0, int cem = 8){
     double weight = 1;
     if (sample.dstype_ != SmurfTree::data) weight = lumi*sample.scale1fb_*sample.sfWeightPU_*sample.sfWeightEff_*sample.sfWeightTrig_;
     
-    histo_lep1pt->Fill(sample.lep1_.Pt(), weight);
-    histo_lep2pt->Fill(sample.lep2_.Pt(), weight);
-    histo_lep1eta->Fill(sample.lep1_.Eta(), weight);
-    histo_lep2eta->Fill(sample.lep2_.Eta(), weight);
-    histo_mll->Fill(sample.dilep_.M(), weight);
-    histo_mt->Fill(sample.mt_, weight);
-    histo_ptll->Fill(sample.dilep_.Pt(), weight);
-    histo_met->Fill(sample.met_, weight);
-    histo_phill->Fill(fabs(sample.dPhi_*180/3.1415), weight);
+    histo_before_lep1pt->Fill(sample.lep1_.Pt(), weight);
+    histo_before_lep2pt->Fill(sample.lep2_.Pt(), weight);
+    histo_before_lep1eta->Fill(sample.lep1_.Eta(), weight);
+    histo_before_lep2eta->Fill(sample.lep2_.Eta(), weight);
+    histo_before_mll->Fill(sample.dilep_.M(), weight);
+    histo_before_mt->Fill(sample.mt_, weight);
+    histo_before_ptll->Fill(sample.dilep_.Pt(), weight);
+    histo_before_met->Fill(sample.met_, weight);
+    histo_before_phill->Fill(fabs(sample.dPhi_*180/3.1415), weight);
 
     
     //HWW slection mock-off
@@ -130,7 +165,16 @@ void chain(int nsel = 0, int cem = 8){
   
     
     histo->Fill(sample.mt_, sample.dilep_.M(), weight);
-    
+    histo_lep1pt->Fill(sample.lep1_.Pt(), weight);
+    histo_lep2pt->Fill(sample.lep2_.Pt(), weight);
+    histo_lep1eta->Fill(sample.lep1_.Eta(), weight);
+    histo_lep2eta->Fill(sample.lep2_.Eta(), weight);
+    histo_mll->Fill(sample.dilep_.M(), weight);
+    histo_mt->Fill(sample.mt_, weight);
+    histo_ptll->Fill(sample.dilep_.Pt(), weight);
+    histo_met->Fill(sample.met_, weight);
+    histo_phill->Fill(fabs(sample.dPhi_*180/3.1415), weight);
+
   }
   
  
