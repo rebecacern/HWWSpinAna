@@ -7,18 +7,25 @@ Scripts to run combine for f_a3 with HWW.
 
 
 setenv SCRAM_ARCH slc5_amd64_gcc472
+
 cmsrel CMSSW_6_1_1
+
 cd CMSSW_6_1_1/src/
+
 cmsenv
+
 git clone
+
 git clone https://github.com/chmartin/HiggsAnalysis-CombinedLimit.git HiggsAnalysis/CombinedLimit
+
 git clone https://github.com/drkovalskyi/Smurf
+
 git clone https://github.com/rebecacern/HWWSpinAna
+
 cd HWWSpinAna/
 
 
-2) start.sh will download the datacards used in the combination in the summer of
-2013 from svn and the proper PDF script. 
+2) start.sh will download the datacards used in the combination in the summer of 2013 from svn and the proper PDF script. 
 Then it will recompile and bring you back to the folder.
 
 sh start.sh
@@ -49,8 +56,11 @@ We need a modified datacard, hwwof_0j_inter_model.txt is a good
 example.
 
 After channel 1 (7TeV)
+
 shapes ggH ch1 test.root w:ggH_ w:$PROCESS_$SYSTEMATIC
+
 After channel 2 (8TeV)
+
 shapes ggH ch2 test2.root w:ggH_ w:$PROCESS_$SYSTEMATIC
 
 + all shape1 instead of "shape" for signals (major modification, script may be needed)
@@ -72,6 +82,7 @@ sh pdf_combine.sh
 root -q -b plotScan1D.C
 
 Have a look:
+
 display v2_output/1D_exp.png
 
 
