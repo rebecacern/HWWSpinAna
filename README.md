@@ -1,7 +1,10 @@
 HWWSpinAna
 ==========
 
-Scripts to run combine for f_a3 with HWW.
+---------------------------------------------
+I. ** Setting up the area *
+---------------------------------------------
+
 
 1) Start from a CMSSW release (CMSSW_6_1_1)
 
@@ -32,6 +35,8 @@ sh start.sh
 
 
 ---------------------------------------------
+II. ** Test the framework, without interference using the old cards **
+---------------------------------------------
 
 
 1) v1_combine.sh will combine the datacards at 7 and 8TeV into one (no
@@ -49,7 +54,8 @@ You can see it like this:
 display v1_output/1D_exp.png
 
 ---------------------------------------------
-
+III. ** Test the framework, with interference, building the PDF using the old cards **
+---------------------------------------------
 
 Now for doing the PDF version, the datacard needs to be adapted.
 We need a modified datacard, hwwof_0j_inter_model.txt is a good
@@ -87,6 +93,7 @@ display v2_output/1D_exp.png
 
 
 ---------------------------------------------
-
+IV. ** Check the new samples **
+---------------------------------------------
 
 In this bundle there's also a folder called "code", it is for testing the tuples (in the MIT cluster)
