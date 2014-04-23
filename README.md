@@ -7,15 +7,14 @@ Scripts to run combine for f_a3 with HWW.
 
 
 setenv SCRAM_ARCH slc5_amd64_gcc472
-
 cmsrel CMSSW_6_1_1
 cd CMSSW_6_1_1/src/
 cmsenv
-
+git clone
 git clone https://github.com/chmartin/HiggsAnalysis-CombinedLimit.git HiggsAnalysis/CombinedLimit
-
-scramv1 clean
-scramv1 b -j8
+git clone https://github.com/drkovalskyi/Smurf
+git clone https://github.com/rebecacern/HWWSpinAna
+cd HWWSpinAna/
 
 
 2) start.sh will download the datacards used in the combination in the summer of
@@ -38,12 +37,15 @@ sh v1_combine.sh
 
 root -q -b plotScan1D.C
 
+You can see it like this:
+
+display v1_output/1D_exp.png
 
 ---------------------------------------------
 
 
 Now for doing the PDF version, the datacard needs to be adapted.
-We need a modified datacard, hwwof_0j_inter_model.txt inside basic/ is a good
+We need a modified datacard, hwwof_0j_inter_model.txt is a good
 example.
 
 After channel 1 (7TeV)
@@ -53,13 +55,27 @@ shapes ggH ch2 test2.root w:ggH_ w:$PROCESS_$SYSTEMATIC
 
 + all shape1 instead of "shape" for signals (major modification, script may be needed)
 
-Then we have
+However, to test it quickly:
+
+scp hwwof_0j_inter_model.txt hwwof_0j_inter.txt
+
+works
+
 
 1) pdf_combine.sh will prepare the rootfiles with the PDF for 7 and 8TeV,
 prepare the workspace and run combine.
 
 sh pdf_combine.sh
 
-2) tbc for the plot
+2) for the plot the same script works (adapting the folder to look, should be fixed soon)
+
+root -q -b plotScan1D.C
+
+Have a look:
+display v2_output/1D_exp.png
 
 
+---------------------------------------------
+
+
+In this bundle there's also a folder called "code", it is for testing the tuples (in the MIT cluster)
