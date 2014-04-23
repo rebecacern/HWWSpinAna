@@ -1,9 +1,17 @@
-root.exe -b -l -q chain.C+\(0\,8\)
-root.exe -b -l -q chain.C+\(1\,8\)
-root.exe -b -l -q chain.C+\(2\,8\)
-root.exe -b -l -q chain.C+\(3\,8\)
+echo "Removing the previous rootfile"
 
-root.exe -b -l -q plot.C\(0\,8\)
-root.exe -b -l -q plot.C\(1\,8\)
-root.exe -b -l -q plot.C\(2\,8\)
-root.exe -b -l -q plot.C\(3\,8\)
+rm rootfiles/test.root
+
+echo "Running templates"
+
+# center of mass energy
+for e in 8; do
+	echo "Center of mass = $e"
+	for i in 0 1 2 3; do
+		root.exe -b -l -q chain.C+\($i\,$e\)
+	done
+
+	for i in 0 1 2 3; do
+		root.exe -b -l -q plot.C\($i\,$e\)
+	done
+done

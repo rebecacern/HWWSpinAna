@@ -44,7 +44,7 @@ void chain(int nsel = 0, int cem = 8){
   sample.InitTree(0);
   
   char rootFile[300];
-  sprintf(rootFile,"test.root");
+  sprintf(rootFile,"rootfiles/test.root");
   
   TFile f_root(rootFile, "UPDATE");
   

@@ -18,7 +18,7 @@ void plot(int nsel = 0, int cem = 8){
   gStyle->SetLabelFont(18,"");
 
   char myRootFile[300];
-  sprintf(myRootFile,"test.root");
+  sprintf(myRootFile,"rootfiles/test.root");
   
   TFile *_file0 = TFile::Open(myRootFile);
  
@@ -54,6 +54,7 @@ void plot(int nsel = 0, int cem = 8){
   histo->GetYaxis()->SetTitle("m_{ll} [GeV]");
   histo->GetXaxis()->SetTitle("m_{T} [GeV]");
   labelcms->Draw();
-   c1->SaveAs("plots/"+ cutLabel[nsel]+".png");
+  if (cem == 8)  c1->SaveAs("plots/"+ cutLabel[nsel]+ "_8TeV.png");
+  else  c1->SaveAs("plots/"+ cutLabel[nsel]+ "_7TeV.png");
    
 }
