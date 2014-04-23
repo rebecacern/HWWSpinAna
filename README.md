@@ -2,7 +2,7 @@ HWWSpinAna
 ==========
 
 ---------------------------------------------
-I. ** Setting up the area 
+I. Setting up the area 
 ---------------------------------------------
 
 
@@ -35,7 +35,7 @@ sh start.sh
 
 
 ---------------------------------------------
-II. ** Test the framework, without interference using the old cards 
+II. Test the framework, without interference using the old cards 
 ---------------------------------------------
 
 
@@ -54,7 +54,7 @@ You can see it like this:
 display v1_output/1D_exp.png
 
 ---------------------------------------------
-III. ** Test the framework, with interference, building the PDF using the old cards 
+III. Test the framework, with interference, building the PDF using the old cards 
 ---------------------------------------------
 
 Now for doing the PDF version, the datacard needs to be adapted.
@@ -93,7 +93,12 @@ display v2_output/1D_exp.png
 
 
 ---------------------------------------------
-IV. ** Check the new samples 
+IV. Check the new samples 
 ---------------------------------------------
 
 In this bundle there's also a folder called "code", it is for testing the tuples (in the MIT cluster)
+
+sh run.sh 
+
+should run out of the box and produce some plots inside "plots", you'll need a
+"rootfiles" folder and a "plots" folder.
