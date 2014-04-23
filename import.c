@@ -32,6 +32,7 @@ void import(int cem = 8){
   
   RooWorkspace w("w");
   TFile *fh = new TFile("datacards/0m/hww2l2v/hwwof_0j.input_"+energy+"TeV.root","read");
+ 
   RooRealVar x ("CMS_zz4l_fg4","CMS_zz4l_fg4",-1,1);
   RooRealVar D1 ("CMS_th1x","CMS_th1x",0, 126);
   for (int k =0;k<13;k++){
@@ -87,8 +88,8 @@ void import(int cem = 8){
     w.import(*ggHpdf,RecycleConflictNodes());
   }
   if (cem ==8)
-    w.writeToFile("rootfiles/test2.root");
-  else 
     w.writeToFile("rootfiles/test.root");
+  else 
+    w.writeToFile("rootfiles/test2.root");
  
 }
