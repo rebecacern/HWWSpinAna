@@ -13,28 +13,29 @@ void chain(int nsel = 0, int cem = 8){
   char plotName[300];
   sprintf(plotName,"test");
   
-  if (nsel == 0) {sprintf(plotName,"0PM");}
-  else if (nsel == 1) {sprintf(plotName,"0M");}
-  else if (nsel == 2) {sprintf(plotName,"Mix");}
-  else if (nsel == 3) {sprintf(plotName,"BCK");}
+  if (nsel == 0) {sprintf(plotName,"SM");}
+  else if (nsel == 1) {sprintf(plotName,"0PM");}
+  else if (nsel == 2) {sprintf(plotName,"0M");}
+  else if (nsel == 3) {sprintf(plotName,"Mix");}
   
   char myRootFile[300];
   double lumi = lumi8;
   if (cem == 8){
-    if (nsel == 0) sprintf(myRootFile,"/data/smurf/data/Run2012_Summer12_SmurfV9_53X/mitf-alljets_mva/ntuples2012_MultiClass_125train_0jets_xww125p6_x125ww4l-0pm-v19.root");
-    else if (nsel == 1) sprintf(myRootFile,"/data/smurf/data/Run2012_Summer12_SmurfV9_53X/mitf-alljets_mva/ntuples2012_MultiClass_125train_0jets_xww125p6_x125ww4l-0mt-v19.root");
-    else if (nsel == 2) sprintf(myRootFile,"/data/smurf/data/Run2012_Summer12_SmurfV9_53X/mitf-alljets_mva/ntuples2012_MultiClass_125train_0jets_xww125p6_x125ww4l-0mf05ph0-v19.root");
-    else if (nsel == 3) sprintf(myRootFile,"/data/smurf/data/Run2012_Summer12_SmurfV9_53X/mitf-alljets_mva/ntuples2012_MultiClass_125train_0jets_backgroundA_skim6.root");
-  } else {
+    if (nsel == 0) sprintf(myRootFile,"/data/smurf/data/Run2012_Summer12_SmurfV9_53X/mitf-alljets_mva/ntuples2012_MultiClass_125train_0jets_hww125.root");
+    else if (nsel == 1) sprintf(myRootFile,"/data/smurf/data/Run2012_Summer12_SmurfV9_53X/mitf-alljets_mva/ntuples2012_MultiClass_125train_0jets_xww125p6_x125ww4l-0pm-v19.root");
+    else if (nsel == 2) sprintf(myRootFile,"/data/smurf/data/Run2012_Summer12_SmurfV9_53X/mitf-alljets_mva/ntuples2012_MultiClass_125train_0jets_xww125p6_x125ww4l-0mt-v19.root");
+    else if (nsel == 3) sprintf(myRootFile,"/data/smurf/data/Run2012_Summer12_SmurfV9_53X/mitf-alljets_mva/ntuples2012_MultiClass_125train_0jets_xww125p6_x125ww4l-0mf05ph0-v19.root");
+   
+ } else {
     lumi = lumi7;
     cout << endl;
     cout << "PLEASE UPDATE THE TUPLES" << endl;
     cout << endl;
-    if (nsel == 0) sprintf(myRootFile,"/data/smurf/data/Run2012_Summer12_SmurfV9_53X/mitf-alljets_mva/ntuples2012_MultiClass_125train_0jets_xww125p6_x125ww4l-0pm-v19.root");
-    else if (nsel == 1) sprintf(myRootFile,"/data/smurf/data/Run2012_Summer12_SmurfV9_53X/mitf-alljets_mva/ntuples2012_MultiClass_125train_0jets_xww125p6_x125ww4l-0mt-v19.root");
-    else if (nsel == 2) sprintf(myRootFile,"/data/smurf/data/Run2012_Summer12_SmurfV9_53X/mitf-alljets_mva/ntuples2012_MultiClass_125train_0jets_xww125p6_x125ww4l-0mf05ph0-v19.root");
-    else if (nsel == 3) sprintf(myRootFile,"/data/smurf/data/Run2012_Summer12_SmurfV9_53X/mitf-alljets_mva/ntuples2012_MultiClass_125train_0jets_backgroundA_skim6.root");
-  }
+    if (nsel == 0) sprintf(myRootFile,"/data/smurf/data/Run2012_Summer12_SmurfV9_53X/mitf-alljets_mva/ntuples2012_MultiClass_125train_0jets_hww125.root");
+    else if (nsel == 1) sprintf(myRootFile,"/data/smurf/data/Run2012_Summer12_SmurfV9_53X/mitf-alljets_mva/ntuples2012_MultiClass_125train_0jets_xww125p6_x125ww4l-0pm-v19.root");
+    else if (nsel == 2) sprintf(myRootFile,"/data/smurf/data/Run2012_Summer12_SmurfV9_53X/mitf-alljets_mva/ntuples2012_MultiClass_125train_0jets_xww125p6_x125ww4l-0mt-v19.root");
+    else if (nsel == 3) sprintf(myRootFile,"/data/smurf/data/Run2012_Summer12_SmurfV9_53X/mitf-alljets_mva/ntuples2012_MultiClass_125train_0jets_xww125p6_x125ww4l-0mf05ph0-v19.root");
+ }
   
   //Load datasets
   

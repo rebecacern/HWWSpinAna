@@ -25,12 +25,13 @@ void plot(int nsel = 0, int cem = 8){
   char plotName[300];
   sprintf(plotName,"test");
   
-  if (nsel == 0) {sprintf(plotName,"0PM");}
-  else if (nsel == 1) {sprintf(plotName,"0M");}
-  else if (nsel == 2) {sprintf(plotName,"Mix");}
-  else if (nsel == 3) {sprintf(plotName,"BCK");}
+  if (nsel == 0) {sprintf(plotName,"SM");}
+  else if (nsel == 1) {sprintf(plotName,"0PM");}
+  else if (nsel == 2) {sprintf(plotName,"0M");}
+  else if (nsel == 3) {sprintf(plotName,"Mix");}
+
   
-  TString cutLabel[4] =     { "0Pm", "0m", "0Mix", "bck"};
+  TString cutLabel[4] =     {"SM", "0Pm", "0m", "0Mix"};
 
   
   char title[300];
