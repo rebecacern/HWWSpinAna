@@ -13,7 +13,7 @@
 
 
 using namespace std;
-void datacardmaker(){
+void datacardmaker(bool regular = true){
 
   const int np = 14;
   TString processName[np] =  { "ggH_ALT", "ggH", "qqWW", "ggWW", "VV", "Top", "Zjets", "WjetsE", "Wgamma", "Wg3l", "Ztt", "WjetsM", "qqWW2j", "Data"};
@@ -29,7 +29,8 @@ void datacardmaker(){
   }
  
   char datacardFile[300]; 
-  sprintf(datacardFile,"datacard.txt");
+  if (regular) sprintf(datacardFile,"datacard.txt");
+  else sprintf(datacardFile,"datacard_pdf.txt");
 
   ofstream datacard(datacardFile); 
   
@@ -41,6 +42,7 @@ void datacardmaker(){
   datacard << "shapes *   *  " ;
   datacard << "hwwof_0j.input_8TeV.root  histo_$PROCESS histo_$PROCESS_$SYSTEMATIC" << endl;
   datacard << "shapes data_obs * hwwof_0j.input_8TeV.root  histo_Data " << endl;
+  if (!regular) datacard << "shapes ggH ch1 rootfiles/test.root w:ggH_ w:$PROCESS_$SYSTEMATIC" << endl;
   datacard << "----------------------------------------------------------------------------------------------------------------------------------" << endl;
   
   datacard << "bin\t\t\t\t\t\t\t" ;
@@ -53,7 +55,7 @@ void datacardmaker(){
   for (int i = 0; i < np -1; i++) { datacard << i-1 << "\t";} 
   datacard << endl;
   datacard << "rate\t\t\t\t\t\t\t" ;
-  for (int i = 0; i < np -1; i++) { datacard << setprecision(precision(h[i]->Integral())) << h[i]->Integral() << "\t";}
+  for (int i = 0; i < np -1; i++) { if (i==0 && !regular)  datacard << "0\t" ; else datacard << setprecision(precision(h[i]->Integral())) << h[i]->Integral() << "\t";}
   datacard << endl;
   
    datacard << "----------------------------------------------------------------------------------------------------------------------------------" << endl;
@@ -63,46 +65,48 @@ void datacardmaker(){
   datacard << "lumi_8TeV\t\t\t\tlnN\t\t";
   for (int i = 0; i < np -1; i++) { if (i!=np-3 && i!=np-7 && i!=np-8 && i!=np-9) datacard << "1.026\t"; else datacard << "-\t";}
   datacard << endl;
- 
+  
   datacard << "CMS_hww_MVALepEffBounding\t\tshape\t\t";
-  for (int i = 0; i < np -1; i++) { if (i==0 || i==2 || i ==3 || i == 4 || i==12) datacard << "1.000\t"; else datacard << "-\t";}
+  for (int i = 0; i < np -1; i++) { if (i==0 || (i==1 && regular) || i==2 || i ==3 || i == 4 || i==12) datacard << "1.000\t"; else datacard << "-\t";}
   datacard << endl;
     
   datacard << "CMS_hww_MVALepResBounding\t\tshape\t\t";
-  for (int i = 0; i < np -1; i++) { if (i==0 || i==2 || i ==3 || i == 4 || i == 5 || i==12) datacard << "1.000\t"; else datacard << "-\t";}
+  for (int i = 0; i < np -1; i++) { if (i==0 || (i==1 && regular) || i==2 || i ==3 || i == 4 || i == 5 || i==12) datacard << "1.000\t"; else datacard << "-\t";}
   datacard << endl;
   
   datacard << "CMS_hww_MVAMETResBounding\t\tshape\t\t";
-  for (int i = 0; i < np -1; i++) { if (i==0 || i==2 || i ==3 || i == 4 || i == 5 || i==12) datacard << "1.000\t"; else datacard << "-\t";}
+  for (int i = 0; i < np -1; i++) { if (i==0 || (i==1 && regular) || i==2 || i ==3 || i == 4 || i == 5 || i==12) datacard << "1.000\t"; else datacard << "-\t";}
   datacard << endl;
   
+  if (!regular){
   /////////////  
   //Shape1
-  datacard << "#CMS_hww_MVALepEffBounding\t\tshape1\t\t";
+  datacard << "CMS_hww_MVALepEffBounding\t\tshape1\t\t";
   for (int i = 0; i < np -1; i++) { if (i==1) datacard << "1.000\t"; else datacard << "-\t";}
   datacard << endl;
     
-  datacard << "#CMS_hww_MVALepResBounding\t\tshape1\t\t";
+  datacard << "CMS_hww_MVALepResBounding\t\tshape1\t\t";
   for (int i = 0; i < np -1; i++) { if (i==1)  datacard << "1.000\t"; else datacard << "-\t";}
   datacard << endl;
   
-  datacard << "#CMS_hww_MVAMETResBounding\t\tshape1\t\t";
+  datacard << "CMS_hww_MVAMETResBounding\t\tshape1\t\t";
   for (int i = 0; i < np -1; i++) { if (i==1)  datacard << "1.000\t"; else datacard << "-\t";}
   datacard << endl;
   /////////////
-  
+  }
   
   datacard << "CMS_hww_MVAJESBounding\t\t\tshape\t\t";
-  for (int i = 0; i < np -1; i++) { if (i==0 || i==2 || i ==3 || i == 4 || i == 5 || i==12) datacard << "1.000\t"; else datacard << "-\t";}
+  for (int i = 0; i < np -1; i++) { if (i==0 || (i==1 && regular)|| i==2 || i ==3 || i == 4 || i == 5 || i==12) datacard << "1.000\t"; else datacard << "-\t";}
   datacard << endl;
   
-  
+  if (!regular){
   /////////////  
   //Shape1
-  datacard << "#CMS_hww_MVAJESBounding\t\t\tshape1\t\t";
+  datacard << "CMS_hww_MVAJESBounding\t\t\tshape1\t\t";
   for (int i = 0; i < np -1; i++) { if (i==1) datacard << "1.000\t"; else datacard << "-\t";}
   datacard << endl;
   /////////////  
+  }
   
   datacard << "FakeRate_e\t\t\t\tlnN\t\t";
   for (int i = 0; i < np -1; i++) { if (i==6) datacard << "1.360\t"; else datacard << "-\t";}
@@ -220,17 +224,22 @@ void datacardmaker(){
   for (int i = 0; i < np -1; i++) { if (i==2) datacard << "1.0\t"; else datacard << "-\t";}
   datacard << endl;
   
-  datacard << "CMS_hwwof_0j_MVAggH_ALTStatBounding_8TeV\tshape\t\t";
+  datacard << "CMS_hwwof_0j_MVAggH_ALTStatBounding_8TeV\tshape\t";
   for (int i = 0; i < np -1; i++) { if (i==0) datacard << "1.0\t"; else datacard << "-\t";}
   datacard << endl;
   
+  if (regular){
+  datacard << "CMS_hwwof_0j_MVAggHStatBounding_8TeV\tshape\t\t";
+  for (int i = 0; i < np -1; i++) { if (i==1) datacard << "1.0\t"; else datacard << "-\t";}
+  datacard << endl;
+  } else {
   /////////////  
   //Shape1
-  datacard << "#CMS_hwwof_0j_MVAggHStatBounding_8TeV\tshape1\t\t";
+  datacard << "CMS_hwwof_0j_MVAggHStatBounding_8TeV\tshape1\t\t";
   for (int i = 0; i < np -1; i++) { if (i==1) datacard << "1.0\t"; else datacard << "-\t";}
   datacard << endl;
   ///////////// 
-  
+  }
   datacard << "CMS_hwwof_0j_MVAqqWWStatBounding_8TeV\tshape\t\t";
   for (int i = 0; i < np -1; i++) { if (i==2) datacard << "1.0\t"; else datacard << "-\t";}
   datacard << endl;
