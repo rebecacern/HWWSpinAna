@@ -22,7 +22,7 @@ void compareplot(){
   
   TFile *_file0 = TFile::Open(myRootFile);
  
-  TString sampleLabel[4] =     {"SM", "0PM", "0M", "Mix"};
+  TString sampleLabel[5] =     {"SM", "0PM", "0M", "Mix", "Old"};
 
 
   const int nPlots = 9;
@@ -32,7 +32,7 @@ void compareplot(){
 
   TH1D*  h0[2][nPlots];
   TH1D*  h1[2][nPlots];
-  TH1D*  h2[4][nPlots];
+  TH1D*  h2[5][nPlots];
   
   for (const int iPlot = 0; iPlot < nPlots; iPlot++){
     cout << cutLabel[iPlot] << endl;
@@ -42,7 +42,7 @@ void compareplot(){
     h1[0][iPlot] = (TH1D*) _file0->Get("histo_" + cutLabel[iPlot]+"_"+sampleLabel[0]+"_8TeV");
     h1[1][iPlot] = (TH1D*) _file0->Get("histo_" + cutLabel[iPlot]+"_"+sampleLabel[1]+"_8TeV");
     
-    for (int i =0; i<4; i++){
+    for (int i =0; i<5; i++){
       h2[i][iPlot] = (TH1D*) _file0->Get("histo_" + cutLabel[iPlot]+"_"+sampleLabel[i]+"_8TeV");
     }
      
@@ -93,7 +93,7 @@ void compareplot(){
     leg->Draw();
     c1->SaveAs("plots/"+ cutLabel[iPlot]+ "_8TeV.png");
     
-    for (int i = 2; i<4; i++){
+    for (int i = 2; i<5; i++){
     
       TCanvas *c1 = new TCanvas();
       h2[0][iPlot]->SetLineColor(kRed);

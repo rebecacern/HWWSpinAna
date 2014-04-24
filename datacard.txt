@@ -12,14 +12,10 @@ process							-1	0	1	2	3	4	5	6	7	8	9	10	11
 rate							196.59	234.88	3953.4	209.76	131.91	520.28	0	283.1	114.97	166.92	46.037	332.29	0.2878	
 ----------------------------------------------------------------------------------------------------------------------------------
 lumi_8TeV				lnN		1.026	1.026	1.026	1.026	1.026	-	-	-	1.026	1.026	1.026	-	1.026	
-CMS_hww_MVALepEffBounding		shape		1.000	-	1.000	1.000	1.000	-	-	-	-	-	-	-	1.000	
-CMS_hww_MVALepResBounding		shape		1.000	-	1.000	1.000	1.000	1.000	-	-	-	-	-	-	1.000	
-CMS_hww_MVAMETResBounding		shape		1.000	-	1.000	1.000	1.000	1.000	-	-	-	-	-	-	1.000	
-#CMS_hww_MVALepEffBounding		shape1		-	1.000	-	-	-	-	-	-	-	-	-	-	-	
-#CMS_hww_MVALepResBounding		shape1		-	1.000	-	-	-	-	-	-	-	-	-	-	-	
-#CMS_hww_MVAMETResBounding		shape1		-	1.000	-	-	-	-	-	-	-	-	-	-	-	
-CMS_hww_MVAJESBounding			shape		1.000	-	1.000	1.000	1.000	1.000	-	-	-	-	-	-	1.000	
-#CMS_hww_MVAJESBounding			shape1		-	1.000	-	-	-	-	-	-	-	-	-	-	-	
+CMS_hww_MVALepEffBounding		shape		1.000	1.000	1.000	1.000	1.000	-	-	-	-	-	-	-	1.000	
+CMS_hww_MVALepResBounding		shape		1.000	1.000	1.000	1.000	1.000	1.000	-	-	-	-	-	-	1.000	
+CMS_hww_MVAMETResBounding		shape		1.000	1.000	1.000	1.000	1.000	1.000	-	-	-	-	-	-	1.000	
+CMS_hww_MVAJESBounding			shape		1.000	1.000	1.000	1.000	1.000	1.000	-	-	-	-	-	-	1.000	
 FakeRate_e				lnN		-	-	-	-	-	-	1.360	-	-	-	-	-	-	
 FakeRate_m				lnN		-	-	-	-	-	-	-	-	-	-	-	1.360	-	
 CMS_hww_MVAWEBounding			shape		-	-	-	-	-	-	-	1.000	-	-	-	-	-	
@@ -49,8 +45,8 @@ CMS_hww_MVATopBounding			shape		-	-	-	-	-	1.0	-	-	-	-	-	-	-
 CMS_hww_MVAWWBounding			shape		-	-	1.0	-	-	-	-	-	-	-	-	-	-	
 CMS_hww_MVAWWNLOBounding		shape		-	-	1.0	-	-	-	-	-	-	-	-	-	-	
 CMS_hww_MVAWWNLOBounding		shape		-	-	1.0	-	-	-	-	-	-	-	-	-	-	
-CMS_hwwof_0j_MVAggH_ALTStatBounding_8TeV	shape		1.0	-	-	-	-	-	-	-	-	-	-	-	-	
-#CMS_hwwof_0j_MVAggHStatBounding_8TeV	shape1		-	1.0	-	-	-	-	-	-	-	-	-	-	-	
+CMS_hwwof_0j_MVAggH_ALTStatBounding_8TeV	shape	1.0	-	-	-	-	-	-	-	-	-	-	-	-	
+CMS_hwwof_0j_MVAggHStatBounding_8TeV	shape		-	1.0	-	-	-	-	-	-	-	-	-	-	-	
 CMS_hwwof_0j_MVAqqWWStatBounding_8TeV	shape		-	-	1.0	-	-	-	-	-	-	-	-	-	-	
 CMS_hwwof_0j_MVAggWWStatBounding_8TeV	shape		-	-	-	1.0	-	-	-	-	-	-	-	-	-	
 CMS_hwwof_0j_MVAVVStatBounding_8TeV	shape		-	-	-	-	1.0	-	-	-	-	-	-	-	-	

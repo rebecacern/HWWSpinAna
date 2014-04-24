@@ -17,6 +17,7 @@ void chain(int nsel = 0, int cem = 8){
   else if (nsel == 1) {sprintf(plotName,"0PM");}
   else if (nsel == 2) {sprintf(plotName,"0M");}
   else if (nsel == 3) {sprintf(plotName,"Mix");}
+  else if (nsel == 4) {sprintf(plotName,"Old");}
   
   char myRootFile[300];
   double lumi = lumi8;
@@ -25,7 +26,7 @@ void chain(int nsel = 0, int cem = 8){
     else if (nsel == 1) sprintf(myRootFile,"/data/smurf/data/Run2012_Summer12_SmurfV9_53X/mitf-alljets_mva/ntuples2012_MultiClass_125train_0jets_xww125p6_x125ww4l-0pm-v19.root");
     else if (nsel == 2) sprintf(myRootFile,"/data/smurf/data/Run2012_Summer12_SmurfV9_53X/mitf-alljets_mva/ntuples2012_MultiClass_125train_0jets_xww125p6_x125ww4l-0mt-v19.root");
     else if (nsel == 3) sprintf(myRootFile,"/data/smurf/data/Run2012_Summer12_SmurfV9_53X/mitf-alljets_mva/ntuples2012_MultiClass_125train_0jets_xww125p6_x125ww4l-0mf05ph0-v19.root");
-   
+    else if (nsel == 4) sprintf(myRootFile,"/data/smurf/data/Run2012_Summer12_SmurfV9_53X/mitf-alljets/xww0p125.root");
  } else {
     lumi = lumi7;
     cout << endl;
@@ -35,6 +36,7 @@ void chain(int nsel = 0, int cem = 8){
     else if (nsel == 1) sprintf(myRootFile,"/data/smurf/data/Run2012_Summer12_SmurfV9_53X/mitf-alljets_mva/ntuples2012_MultiClass_125train_0jets_xww125p6_x125ww4l-0pm-v19.root");
     else if (nsel == 2) sprintf(myRootFile,"/data/smurf/data/Run2012_Summer12_SmurfV9_53X/mitf-alljets_mva/ntuples2012_MultiClass_125train_0jets_xww125p6_x125ww4l-0mt-v19.root");
     else if (nsel == 3) sprintf(myRootFile,"/data/smurf/data/Run2012_Summer12_SmurfV9_53X/mitf-alljets_mva/ntuples2012_MultiClass_125train_0jets_xww125p6_x125ww4l-0mf05ph0-v19.root");
+    else if (nsel == 4) sprintf(myRootFile,"/data/smurf/data/Run2012_Summer12_SmurfV9_53X/mitf-alljets/xww0p125.root");
  }
   
   //Load datasets
@@ -132,9 +134,14 @@ void chain(int nsel = 0, int cem = 8){
   int nSample=sample.tree_->GetEntries();
   
   cout << nSample << endl;
+  int events = 0;
   for (int i=0; i<nSample; ++i) {
     //   for (int i=0; i<10; ++i) {
     sample.tree_->GetEntry(i); 
+    if(sample.processId_ != 10010) continue;
+    if ((fabs(sample.lep1McId_) == fabs(sample.lep2McId_))) continue;
+    events++;
+    
     double weight = 1;
     if (sample.dstype_ != SmurfTree::data) weight = lumi*sample.scale1fb_*sample.sfWeightPU_*sample.sfWeightEff_*sample.sfWeightTrig_;
     
@@ -149,24 +156,19 @@ void chain(int nsel = 0, int cem = 8){
     histo_before_phill->Fill(fabs(sample.dPhi_*180/3.1415), weight);
     
     //HWW slection mock-off
-    
-    if(sample.lep3McId_) continue;
+    int nJetsType = 0;
+    if (sample.dilep_.M() <= 12 && sample.dilep_.M() >= 200) continue;
+    if ((sample.cuts_ & SmurfTree::ExtraLeptonVeto) != SmurfTree::ExtraLeptonVeto) continue;
     if (sample.lq1_*sample.lq2_ > 0) continue;
+    if (sample.njets_ != nJetsType) continue; 
     if (sample.lep1_.Pt() < 20) continue;
     if (sample.lep2_.Pt() < 10) continue;
-    
-    if (sample.njets_ !=0) continue;
-  //  if (sample.jet1_.Pt() < 30) continue;
-  
-    if (sample.dilep_.M() < 12) continue; 
-    
-    if (sample.met_ < 20) continue;
-    if (sample.pmet_ < 20 || sample.pTrackMet_ < 20) continue;
-    if (sample.mt_ < 30) continue;
-    if (sample.dilep_.Pt() < 30) continue;
-    
-    if ((fabs(sample.lep1McId_) == fabs(sample.lep2McId_)) && fabs(sample.dilep_.M() - mz) < 15) continue;
+    if (TMath::Min(sample.pmet_,sample.pTrackMet_) <= 20) continue;
+    if (sample.dilep_.Pt() <= 30) continue;
+    if ((sample.cuts_ & SmurfTree::TopVeto) != SmurfTree::TopVeto) continue; 
+    if (sample.mt_ <=30 || sample.mt_ >=280) continue;
     if (sample.mt_ < 60 || sample.mt_ > 120 || sample.dilep_.M() > 100) continue;
+
     
     histo->Fill(sample.mt_, sample.dilep_.M(), weight);
     histo_lep1pt->Fill(sample.lep1_.Pt(), weight);
@@ -181,7 +183,7 @@ void chain(int nsel = 0, int cem = 8){
 
   }
   
- 
+ cout << "Events used: " << events << endl;
   
   f_root.Write();
   f_root.Close();

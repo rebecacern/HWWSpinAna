@@ -29,9 +29,10 @@ void plot(int nsel = 0, int cem = 8){
   else if (nsel == 1) {sprintf(plotName,"0PM");}
   else if (nsel == 2) {sprintf(plotName,"0M");}
   else if (nsel == 3) {sprintf(plotName,"Mix");}
+  else if (nsel == 4) {sprintf(plotName,"Old");}
 
   
-  TString cutLabel[4] =     {"SM", "0Pm", "0m", "0Mix"};
+  TString cutLabel[5] =     {"SM", "0Pm", "0m", "0Mix", "Old"};
 
   
   char title[300];
