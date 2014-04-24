@@ -147,22 +147,26 @@ void chain(int nsel = 0, int cem = 8){
     histo_before_ptll->Fill(sample.dilep_.Pt(), weight);
     histo_before_met->Fill(sample.met_, weight);
     histo_before_phill->Fill(fabs(sample.dPhi_*180/3.1415), weight);
-
     
     //HWW slection mock-off
-    if (sample.njets_ !=1) continue;
-    if (sample.jet1_.Pt() < 30) continue;
     
+    if(sample.lep3McId_) continue;
+    if (sample.lq1_*sample.lq2_ > 0) continue;
     if (sample.lep1_.Pt() < 20) continue;
     if (sample.lep2_.Pt() < 10) continue;
     
-    if (sample.dilep_.M() < 12) continue;
+    if (sample.njets_ !=0) continue;
+  //  if (sample.jet1_.Pt() < 30) continue;
+  
+    if (sample.dilep_.M() < 12) continue; 
+    
+    if (sample.met_ < 20) continue;
     if (sample.pmet_ < 20 || sample.pTrackMet_ < 20) continue;
     if (sample.mt_ < 30) continue;
     if (sample.dilep_.Pt() < 30) continue;
     
     if ((fabs(sample.lep1McId_) == fabs(sample.lep2McId_)) && fabs(sample.dilep_.M() - mz) < 15) continue;
-  
+    if (sample.mt_ < 60 || sample.mt_ > 120 || sample.dilep_.M() > 100) continue;
     
     histo->Fill(sample.mt_, sample.dilep_.M(), weight);
     histo_lep1pt->Fill(sample.lep1_.Pt(), weight);
