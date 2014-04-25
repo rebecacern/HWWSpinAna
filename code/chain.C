@@ -140,6 +140,8 @@ void chain(int nsel = 0, int cem = 8){
     sample.tree_->GetEntry(i); 
     if(sample.processId_ != 10010) continue;
     if ((fabs(sample.lep1McId_) == fabs(sample.lep2McId_))) continue;
+    if ((sample.cuts_ & SmurfTree::Lep1FullSelection) != SmurfTree::Lep1FullSelection || 
+    (sample.cuts_ & SmurfTree::Lep2FullSelection) != SmurfTree::Lep2FullSelection) continue;  
     events++;
     
     double weight = 1;
