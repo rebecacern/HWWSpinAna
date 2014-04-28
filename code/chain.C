@@ -1,23 +1,20 @@
 #include "../../Smurf/Core/SmurfTree.h"
 #include "TH2D.h"
 #include "TH1D.h"
-
-const double lumi8 = 19.467;
-const double lumi7 = 4.924;
-
-const double mz = 91.1876;
+#include "inputs.h"
 
 
 void chain(int nsel = 0, int cem = 8){
   
-  char plotName[300];
+  char plotName[300], Message[300];
   sprintf(plotName,"test");
+  sprintf(Message,"test");
   
-  if (nsel == 0) {sprintf(plotName,"SM");}
-  else if (nsel == 1) {sprintf(plotName,"0PM");}
-  else if (nsel == 2) {sprintf(plotName,"0M");}
-  else if (nsel == 3) {sprintf(plotName,"Mix");}
-  else if (nsel == 4) {sprintf(plotName,"Old");}
+  if (nsel == 0) {sprintf(plotName,"SM"); sprintf(Message,"Standard Model 125GeV official legacy sample");}
+  else if (nsel == 1) {sprintf(plotName,"0PM"); sprintf(Message,"Standard Model JHU Gen");}
+  else if (nsel == 2) {sprintf(plotName,"0M"); sprintf(Message,"Pseudoscalar JHU Gen");}
+  else if (nsel == 3) {sprintf(plotName,"Mix"); sprintf(Message,"Mix JHU Gen");}
+  else if (nsel == 4) {sprintf(plotName,"Old"); sprintf(Message,"Standard Model 125GeV JHU Gen old sample");}
   
   char myRootFile[300];
   double lumi = lumi8;
@@ -43,6 +40,7 @@ void chain(int nsel = 0, int cem = 8){
   
   SmurfTree sample;
   cout << myRootFile << endl;
+  cout << "You are running " << Message << endl;
   sample.LoadTree(myRootFile,-1);
   sample.InitTree(0);
   
@@ -57,6 +55,11 @@ void chain(int nsel = 0, int cem = 8){
   sprintf(title,"histo_%s_%dTeV",plotName, cem);
   TH2F* histo = new TH2F( title, " ", 6, 60, 120, 6, 12, 100);
   histo->Sumw2();
+  
+  //Template!  
+  sprintf(title,"template_%s_%dTeV",plotName, cem);
+  TH1F* histo_template = new TH1F( title, " ",126, -1, 1);
+  histo_template->Sumw2();
   
   //distributions  
   sprintf(title,"histo_before_lep1pt_%s_%dTeV",plotName, cem);
@@ -135,6 +138,7 @@ void chain(int nsel = 0, int cem = 8){
   
   cout << nSample << endl;
   int events = 0;
+  double events_norm = 0;
   for (int i=0; i<nSample; ++i) {
     //   for (int i=0; i<10; ++i) {
     sample.tree_->GetEntry(i); 
@@ -163,15 +167,16 @@ void chain(int nsel = 0, int cem = 8){
     if ((sample.cuts_ & SmurfTree::ExtraLeptonVeto) != SmurfTree::ExtraLeptonVeto) continue;
     if (sample.lq1_*sample.lq2_ > 0) continue;
     if (sample.njets_ != nJetsType) continue; 
-    if (sample.lep1_.Pt() < 20) continue;
-    if (sample.lep2_.Pt() < 10) continue;
+    if (sample.lep1_.Pt() <= 20) continue;
+    if (sample.lep2_.Pt() <= 10) continue;
     if (TMath::Min(sample.pmet_,sample.pTrackMet_) <= 20) continue;
     if (sample.dilep_.Pt() <= 30) continue;
     if ((sample.cuts_ & SmurfTree::TopVeto) != SmurfTree::TopVeto) continue; 
     if (sample.mt_ <=30 || sample.mt_ >=280) continue;
-    if (sample.mt_ < 60 || sample.mt_ > 120 || sample.dilep_.M() > 100) continue;
+    if (sample.mt_ <= 60 || sample.mt_ >= 120 || sample.dilep_.M() >= 100) continue;
 
-    
+    events_norm +=weight;
+    histo_template->Fill(Unroll2VarTo1VarVersion2(sample.dilep_.M(), sample.mt_), weight);
     histo->Fill(sample.mt_, sample.dilep_.M(), weight);
     histo_lep1pt->Fill(sample.lep1_.Pt(), weight);
     histo_lep2pt->Fill(sample.lep2_.Pt(), weight);
@@ -186,8 +191,12 @@ void chain(int nsel = 0, int cem = 8){
   }
   
  cout << "Events used: " << events << endl;
+ cout << "Final yield: " << events_norm << endl;
   
   f_root.Write();
   f_root.Close();
   
 }
+
+
+
