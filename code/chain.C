@@ -142,6 +142,7 @@ void chain(int nsel = 0, int cem = 8){
   for (int i=0; i<nSample; ++i) {
     //   for (int i=0; i<10; ++i) {
     sample.tree_->GetEntry(i); 
+   
     if(sample.processId_ != 10010) continue;
     if ((fabs(sample.lep1McId_) == fabs(sample.lep2McId_))) continue;
     if ((sample.cuts_ & SmurfTree::Lep1FullSelection) != SmurfTree::Lep1FullSelection || 
@@ -163,7 +164,7 @@ void chain(int nsel = 0, int cem = 8){
     
     //HWW slection mock-off
     int nJetsType = 0;
-    if (sample.dilep_.M() <= 12 && sample.dilep_.M() >= 200) continue;
+    if (sample.dilep_.M() <= 12 || sample.dilep_.M() >= 200) continue;
     if ((sample.cuts_ & SmurfTree::ExtraLeptonVeto) != SmurfTree::ExtraLeptonVeto) continue;
     if (sample.lq1_*sample.lq2_ > 0) continue;
     if (sample.njets_ != nJetsType) continue; 
@@ -173,7 +174,7 @@ void chain(int nsel = 0, int cem = 8){
     if (sample.dilep_.Pt() <= 30) continue;
     if ((sample.cuts_ & SmurfTree::TopVeto) != SmurfTree::TopVeto) continue; 
     if (sample.mt_ <=30 || sample.mt_ >=280) continue;
-    if (sample.mt_ <= 60 || sample.mt_ >= 120 || sample.dilep_.M() >= 100) continue;
+    if (sample.mt_ <= 60 || sample.mt_ >= 280 || sample.dilep_.M() >= 200) continue;
 
     events_norm +=weight;
     histo_template->Fill(Unroll2VarTo1VarVersion2(sample.dilep_.M(), sample.mt_), weight);
@@ -187,7 +188,7 @@ void chain(int nsel = 0, int cem = 8){
     histo_ptll->Fill(sample.dilep_.Pt(), weight);
     histo_met->Fill(sample.met_, weight);
     histo_phill->Fill(fabs(sample.dPhi_*180/3.1415), weight);
-    //cout << sample.event_ << "\t" << sample.run_ << "\t" << sample.lumi_ << endl;
+   // cout << sample.event_ << "\t" << sample.run_ << "\t" << sample.lumi_ << endl;
 
   }
   
