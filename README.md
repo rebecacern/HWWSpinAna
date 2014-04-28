@@ -116,9 +116,10 @@ Location of the stuff (MIT):
 
 datacards:
 
-/data/smurf/ceballos/inputLimits/ana_spin_SM (all JHU)
+/data/smurf/ceballos/inputLimits/ana_spin_SM (JHU and official)
 
-/data/smurf/ceballos/inputLimits/ana_spin (JHU and official)
+/data/smurf/ceballos/inputLimits/ana_spin (all JHU)
+
 
 ntuples:
 
