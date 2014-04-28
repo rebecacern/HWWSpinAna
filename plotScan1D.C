@@ -1,9 +1,9 @@
 #include "setTDRStyle.C"
-void plotScan1D(TString fname="1D_exp", TString ffolder="v2_output"){
-  plot(fname, ffolder);
+void plotScan1D(TString fname="1D_exp", TString ffolder="fa3_v1", int option = 0){
+  plot(fname, ffolder, option);
 }
 
-void plot(TString fname, TString ffolder){
+void plot(TString fname, TString ffolder, int option){
 
   bool blind=true;
 
@@ -14,8 +14,8 @@ void plot(TString fname, TString ffolder){
   TFile *f=new TFile(ffolder+"/higgsCombine"+fname+".MultiDimFit.mH125.6.123456.root");
   
   TTree *t=(TTree*)f->Get("limit");
-  //t->Draw("2*deltaNLL:x", "deltaNLL > 0","PL");
-  t->Draw("2*deltaNLL:CMS_zz4l_fg4", "deltaNLL > 0","PL");
+  if (option ==0) t->Draw("2*deltaNLL:x", "deltaNLL > 0","PL");
+  else t->Draw("2*deltaNLL:CMS_zz4l_fg4", "deltaNLL > 0","PL");
 
   TGraph *gr0 = (TGraph*) gROOT->FindObject("Graph")->Clone();
   gr0->SetName("Exp1D");

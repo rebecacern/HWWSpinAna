@@ -187,6 +187,7 @@ void chain(int nsel = 0, int cem = 8){
     histo_ptll->Fill(sample.dilep_.Pt(), weight);
     histo_met->Fill(sample.met_, weight);
     histo_phill->Fill(fabs(sample.dPhi_*180/3.1415), weight);
+    //cout << sample.event_ << "\t" << sample.run_ << "\t" << sample.lumi_ << endl;
 
   }
   
