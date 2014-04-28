@@ -1,7 +1,7 @@
 echo "[Info:] downloading summer 2013 datacards to datacards/"
 
 	svn co svn+ssh://svn.cern.ch/reps/cmshcg/trunk/summer2013/jcp/ datacards
-	svn co svn+ssh://svn.cern.ch/reps/cmshcg/trunk/summer2013/scripts/
+	
 
 echo "[Info:] copying proper PDF class to your CMSSW installation"
 
