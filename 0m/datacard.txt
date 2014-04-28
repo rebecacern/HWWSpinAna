@@ -9,7 +9,7 @@ shapes data_obs * hwwof_0j.input_8TeV.root  histo_Data
 bin							1	1	1	1	1	1	1	1	1	1	1	1	1	
 process							ggH_ALT	ggH	qqWW	ggWW	VV	Top	Zjets	WjetsE	Wgamma	Wg3l	Ztt	WjetsM	qqWW2j	
 process							-1	0	1	2	3	4	5	6	7	8	9	10	11	
-rate							196.59	234.88	3953.4	209.76	131.91	520.28	0	283.1	114.97	166.92	46.037	332.29	0.2878	
+rate							196.59	221.29	3953.4	209.76	131.91	520.28	0	283.1	114.97	166.92	46.037	332.29	0.2878	
 ----------------------------------------------------------------------------------------------------------------------------------
 lumi_8TeV				lnN		1.026	1.026	1.026	1.026	1.026	-	-	-	1.026	1.026	1.026	-	1.026	
 CMS_hww_MVALepEffBounding		shape		1.000	1.000	1.000	1.000	1.000	-	-	-	-	-	-	-	1.000	
@@ -36,11 +36,14 @@ QCDscale_Vgamma				lnN		-	-	-	-	-	-	-	-	1.300	-	-	-	-
 CMS_hww2l2n_QCDscale_ggVV		lnN		-	-	-	1.300	-	-	-	-	-	-	-	-	-	
 QCDscale_WW_EXTRAP			lnN		-	-	-	1.000	-	-	-	-	-	-	-	-	-	
 QCDscale_ggH_ACCEPT			lnN		1.020	1.020	-	-	-	-	-	-	-	-	-	-	-	
+QCDscale_qqH_ACCEPT			lnN		-	-	-	-	-	-	-	-	-	-	-	-	-	
+QCDscale_VH_ACCEPT			lnN		-	-	-	-	-	-	-	-	-	-	-	-	-	
 CMS_hww_0j_ttbar_8TeV			lnN		-	-	-	-	-	1.137	-	-	-	-	-	-	-	
 CMS_hwwof_0j_Z_8TeV			lnN		-	-	-	-	-	-	1.000	-	-	-	-	-	-	
 CMS_hww_0j_WW_8TeV_SHAPE		lnU		-	-	2.0	-	-	-	-	-	-	-	-	-	-	
 CMS_hww_Wg3l				lnN		-	-	-	-	-	-	-	-	-	1.400	-	-	-	
 CMS_hww_Ztt				lnN		-	-	-	-	-	-	-	-	-	-	1.100	-	-	
+BRhiggs_hvv				lnN		1.0423	-	-	-	-	-	-	-	-	-	-	-	-	
 CMS_hww_MVATopBounding			shape		-	-	-	-	-	1.0	-	-	-	-	-	-	-	
 CMS_hww_MVAWWBounding			shape		-	-	1.0	-	-	-	-	-	-	-	-	-	-	
 CMS_hww_MVAWWNLOBounding		shape		-	-	1.0	-	-	-	-	-	-	-	-	-	-	

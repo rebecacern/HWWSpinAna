@@ -188,6 +188,14 @@ void datacardmaker(bool regular = true){
   for (int i = 0; i < np -1; i++) { if (i<2) datacard << "1.020\t"; else datacard << "-\t";}
   datacard << endl;
   
+  datacard << "QCDscale_qqH_ACCEPT\t\t\tlnN\t\t";
+  for (int i = 0; i < np -1; i++) { datacard << "-\t";}
+  datacard << endl;
+  
+  datacard << "QCDscale_VH_ACCEPT\t\t\tlnN\t\t";
+  for (int i = 0; i < np -1; i++) { datacard << "-\t";}
+  datacard << endl;
+  
   datacard << "CMS_hww_0j_ttbar_8TeV\t\t\tlnN\t\t";
   for (int i = 0; i < np -1; i++) { if (i==5) datacard << "1.137\t"; else datacard << "-\t";}
   datacard << endl;
@@ -207,6 +215,11 @@ void datacardmaker(bool regular = true){
   datacard << "CMS_hww_Ztt\t\t\t\tlnN\t\t";
   for (int i = 0; i < np -1; i++) { if (i==10) datacard << "1.100\t"; else datacard << "-\t";}
   datacard << endl;
+  
+  datacard << "BRhiggs_hvv\t\t\t\tlnN\t\t";
+  for (int i = 0; i < np -1; i++) { if (i==0) datacard << "1.0423\t"; else datacard << "-\t";}
+  datacard << endl;
+  
   
   datacard << "CMS_hww_MVATopBounding\t\t\tshape\t\t";
   for (int i = 0; i < np -1; i++) { if (i==5) datacard << "1.0\t"; else datacard << "-\t";}
