@@ -19,7 +19,9 @@ void datacardmaker(bool regular = true){
   TString processName[np] =  { "qqbarH_ALT", "ggH_ALT", "ZH", "WH", "qqH", "ggH", "qqWW", "ggWW", "VV", "Top", "Zjets", "WjetsE", "Wgamma", "Wg3l", "Ztt", "WjetsM", "qqWW2j", "Data"};
  
   char rootFile[300];
-  sprintf(rootFile,"../fa3/0m/hwwof_0j.input_8TeV.root");
+  //sprintf(rootFile,"../fa3/0m/hwwof_1j.input_8TeV.root");
+ //sprintf(rootFile,"../fa3/0m/hwwof_1j.input_8TeV.root");
+  sprintf(rootFile,"../0m_proper/hwwof_1j.input_8TeV.root");
  
   
   TFile *_file0 = TFile::Open(rootFile);
@@ -31,8 +33,12 @@ void datacardmaker(bool regular = true){
  
   char datacardFile[300]; 
   
-  if (regular) sprintf(datacardFile,"../fa3/0m/hwwof_0j_new.txt");
-  else sprintf(datacardFile,"../fa3/0m/hwwof_0j_inter.txt");
+  //if (regular) sprintf(datacardFile,"../fa3/0m/hwwof_1j_new.txt");
+  //else sprintf(datacardFile,"../fa3/0m/hwwof_1j_inter.txt");
+//  if (regular) sprintf(datacardFile,"../fa3/0m/hwwof_1j_new.txt");
+ // else sprintf(datacardFile,"../fa3/0m/hwwof_1j_inter.txt");
+  if (regular) sprintf(datacardFile,"../0m_proper/hwwof_1j_new.txt");
+  else sprintf(datacardFile,"../0m_proper/hwwof_1j_inter.txt");
  
 
   ofstream datacard(datacardFile); 
@@ -43,8 +49,8 @@ void datacardmaker(bool regular = true){
   datacard << "----------------------------------------------------------------------------------------------------------------------------------" << endl;
   datacard << "Observation " << h[np-1]->Integral() << endl;
   datacard << "shapes *   *  " ;
-  datacard << "hwwof_0j.input_8TeV.root  histo_$PROCESS histo_$PROCESS_$SYSTEMATIC" << endl;
-  datacard << "shapes data_obs * hwwof_0j.input_8TeV.root  histo_Data " << endl;
+  datacard << "hwwof_1j.input_8TeV.root  histo_$PROCESS histo_$PROCESS_$SYSTEMATIC" << endl;
+  datacard << "shapes data_obs * hwwof_1j.input_8TeV.root  histo_Data " << endl;
   if (!regular) datacard << "shapes ggH ch1 rootfiles/test.root w:ggH_ w:$PROCESS_$SYSTEMATIC" << endl;
   datacard << "----------------------------------------------------------------------------------------------------------------------------------" << endl;
   
@@ -199,15 +205,15 @@ void datacardmaker(bool regular = true){
   for (int i = 0; i < np -1; i++) { datacard << "-\t";}
   datacard << endl;
   
-  datacard << "CMS_hww_0j_ttbar_8TeV\t\t\tlnN\t\t";
+  datacard << "CMS_hww_1j_ttbar_8TeV\t\t\tlnN\t\t";
   for (int i = 0; i < np -1; i++) { if (i==9) datacard << "1.137\t"; else datacard << "-\t";}
   datacard << endl;
   
-  datacard << "CMS_hwwof_0j_Z_8TeV\t\t\tlnN\t\t";
+  datacard << "CMS_hwwof_1j_Z_8TeV\t\t\tlnN\t\t";
   for (int i = 0; i < np -1; i++) { if (i==10) datacard << "1.000\t"; else datacard << "-\t";}
   datacard << endl;
   
-  datacard << "CMS_hww_0j_WW_8TeV_SHAPE\t\tlnU\t\t";
+  datacard << "CMS_hww_1j_WW_8TeV_SHAPE\t\tlnU\t\t";
   for (int i = 0; i < np -1; i++) { if (i==6) datacard << "2.0\t"; else datacard << "-\t";}
   datacard << endl;
   
@@ -240,63 +246,63 @@ void datacardmaker(bool regular = true){
   for (int i = 0; i < np -1; i++) { if (i==6) datacard << "1.0\t"; else datacard << "-\t";}
   datacard << endl;
   
-  datacard << "CMS_hwwof_0j_MVAggH_ALTStatBounding_8TeV\tshape\t";
+  datacard << "CMS_hwwof_1j_MVAggH_ALTStatBounding_8TeV\tshape\t";
   for (int i = 0; i < np -1; i++) { if (i==1) datacard << "1.0\t"; else datacard << "-\t";}
   datacard << endl;
   
   if (regular){
-  datacard << "CMS_hwwof_0j_MVAggHStatBounding_8TeV\tshape\t\t";
+  datacard << "CMS_hwwof_1j_MVAggHStatBounding_8TeV\tshape\t\t";
   for (int i = 0; i < np -1; i++) { if (i==5) datacard << "1.0\t"; else datacard << "-\t";}
   datacard << endl;
   } else {
   /////////////  
   //Shape1
-  datacard << "CMS_hwwof_0j_MVAggHStatBounding_8TeV\tshape1\t\t";
+  datacard << "CMS_hwwof_1j_MVAggHStatBounding_8TeV\tshape1\t\t";
   for (int i = 0; i < np -1; i++) { if (i==5) datacard << "1.0\t"; else datacard << "-\t";}
   datacard << endl;
   ///////////// 
   }
-  datacard << "CMS_hwwof_0j_MVAqqWWStatBounding_8TeV\tshape\t\t";
+  datacard << "CMS_hwwof_1j_MVAqqWWStatBounding_8TeV\tshape\t\t";
   for (int i = 0; i < np -1; i++) { if (i==6) datacard << "1.0\t"; else datacard << "-\t";}
   datacard << endl;
   
-  datacard << "CMS_hwwof_0j_MVAggWWStatBounding_8TeV\tshape\t\t";
+  datacard << "CMS_hwwof_1j_MVAggWWStatBounding_8TeV\tshape\t\t";
   for (int i = 0; i < np -1; i++) { if (i==7) datacard << "1.0\t"; else datacard << "-\t";}
   datacard << endl;
   
-  datacard << "CMS_hwwof_0j_MVAVVStatBounding_8TeV\tshape\t\t";
+  datacard << "CMS_hwwof_1j_MVAVVStatBounding_8TeV\tshape\t\t";
   for (int i = 0; i < np -1; i++) { if (i==8) datacard << "1.0\t"; else datacard << "-\t";}
   datacard << endl;
   
-  datacard << "CMS_hwwof_0j_MVATopStatBounding_8TeV\tshape\t\t";
+  datacard << "CMS_hwwof_1j_MVATopStatBounding_8TeV\tshape\t\t";
   for (int i = 0; i < np -1; i++) { if (i==9) datacard << "1.0\t"; else datacard << "-\t";}
   datacard << endl;
   
-  datacard << "CMS_hwwof_0j_MVAZjetsStatBounding_8TeV\tshape\t\t";
+  datacard << "CMS_hwwof_1j_MVAZjetsStatBounding_8TeV\tshape\t\t";
   for (int i = 0; i < np -1; i++) { if (i==10) datacard << "1.0\t"; else datacard << "-\t";}
   datacard << endl;
   
-  datacard << "CMS_hwwof_0j_MVAWjetsEStatBounding_8TeV\tshape\t\t";
+  datacard << "CMS_hwwof_1j_MVAWjetsEStatBounding_8TeV\tshape\t\t";
   for (int i = 0; i < np -1; i++) { if (i==11) datacard << "1.0\t"; else datacard << "-\t";}
   datacard << endl;
   
-  datacard << "CMS_hwwof_0j_MVAWgammaStatBounding_8TeV\tshape\t\t";
+  datacard << "CMS_hwwof_1j_MVAWgammaStatBounding_8TeV\tshape\t\t";
   for (int i = 0; i < np -1; i++) { if (i==12) datacard << "1.0\t"; else datacard << "-\t";}
   datacard << endl;
   
-  datacard << "CMS_hwwof_0j_MVAWg3lStatBounding_8TeV\tshape\t\t";
+  datacard << "CMS_hwwof_1j_MVAWg3lStatBounding_8TeV\tshape\t\t";
   for (int i = 0; i < np -1; i++) { if (i==13) datacard << "1.0\t"; else datacard << "-\t";}
   datacard << endl;
   
-  datacard << "CMS_hwwof_0j_MVAZttStatBounding_8TeV\tshape\t\t";
+  datacard << "CMS_hwwof_1j_MVAZttStatBounding_8TeV\tshape\t\t";
   for (int i = 0; i < np -1; i++) { if (i==14) datacard << "1.0\t"; else datacard << "-\t";}
   datacard << endl;
   
-  datacard << "CMS_hwwof_0j_MVAWjetsMStatBounding_8TeV\tshape\t\t";
+  datacard << "CMS_hwwof_1j_MVAWjetsMStatBounding_8TeV\tshape\t\t";
   for (int i = 0; i < np -1; i++) { if (i==15) datacard << "1.0\t"; else datacard << "-\t";}
   datacard << endl;
   
-  datacard << "CMS_hwwof_0j_MVAqqWW2jStatBounding_8TeV\tshape\t\t";
+  datacard << "CMS_hwwof_1j_MVAqqWW2jStatBounding_8TeV\tshape\t\t";
   for (int i = 0; i < np -1; i++) { if (i==16) datacard << "1.0\t"; else datacard << "-\t";}
   datacard << endl;
   

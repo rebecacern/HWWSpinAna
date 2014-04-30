@@ -1,11 +1,11 @@
-FOLDER='v1_output'
+FOLDER='v1_output_official'
 
 echo "~** This script will run version 1, no interference term **~"
 	mkdir $FOLDER
 echo "[Info:] combine datacards of hww 0j"
- 
-	../HiggsAnalysis/CombinedLimit/scripts/combineCards.py datacards/0m/hww2l2v/hwwof_0j_*TeV.txt > hwwof_0j.txt
-
+ 	rm hwwof_0j.txt
+	../HiggsAnalysis/CombinedLimit/scripts/combineCards.py 0m_off/hwwof_*new.txt > hwwof_0j.txt
+	
 echo "[Info:] building the workspace" 
 
 	text2workspace.py -m 125.6 hwwof_0j.txt -P HiggsAnalysis.CombinedLimit.HiggsJPC:twoHypothesisHiggs --PO=muFloating -o $FOLDER/fixedMu.root 

@@ -1,5 +1,5 @@
 #include "setTDRStyle.C"
-void plotScan1D(TString fname="1D_exp", TString ffolder="fa3_v1", int option = 0){
+void plotScan1D(TString fname="1D_exp", TString ffolder="v1_output_proper", int option = 0){
   plot(fname, ffolder, option);
 }
 
@@ -70,7 +70,7 @@ void plot(TString fname, TString ffolder, int option){
   pt->SetTextSize(0.03);
   TText *text = pt->AddText(0.01,0.5,"CMS");
   text = pt->AddText(0.2,0.6,Form("#sqrt{s} = 7 TeV, L = %.1f fb^{-1}  #sqrt{s} = 8 TeV, L = %.1f fb^{-1}",lumi7TeV,lumi8TeV));
-  pt->Draw();  
+ // pt->Draw();  
   
   TPaveText *oneSig = new TPaveText(0.85,0.18,0.9,0.22,"NDC");
   oneSig->SetFillColor(0);
@@ -78,7 +78,7 @@ void plot(TString fname, TString ffolder, int option){
   oneSig->SetTextColor(kRed);
   oneSig->SetBorderSize(0);
   oneSig->AddText("1#sigma"); 
-  oneSig->Draw();
+  //oneSig->Draw();
   
   TPaveText *twoSig = new TPaveText(0.85,0.44,0.9,0.48,"NDC");
   twoSig->SetFillColor(0);
@@ -86,7 +86,7 @@ void plot(TString fname, TString ffolder, int option){
   twoSig->SetTextColor(kRed);
   twoSig->SetBorderSize(0);
   twoSig->AddText("2#sigma"); 
-  twoSig->Draw();
+ // twoSig->Draw();
   
   TLine *l1=new TLine();
   l1->SetLineStyle(9);
@@ -98,8 +98,8 @@ void plot(TString fname, TString ffolder, int option){
   l2->SetLineStyle(9);
   l2->SetLineWidth(2);
   l2->SetLineColor(kRed);
-  l2->DrawLine(0,4.,1.0,4.);
-  l2->Draw("same");
+ // l2->DrawLine(0,4.,1.0,4.);
+ // l2->Draw("same");
 
   c1->SaveAs(ffolder+"/"+fname+".png");
   

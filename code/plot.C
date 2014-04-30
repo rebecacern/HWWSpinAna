@@ -30,9 +30,11 @@ void plot(int nsel = 0, int cem = 8){
   else if (nsel == 2) {sprintf(plotName,"0M");}
   else if (nsel == 3) {sprintf(plotName,"Mix");}
   else if (nsel == 4) {sprintf(plotName,"Old");}
+  else if (nsel == 5) {sprintf(plotName,"2BP");}
 
   
-  TString cutLabel[5] =     {"SM", "0Pm", "0m", "0Mix", "Old"};
+  TString cutLabel[6] =     {"SM 0^{+}_{m} Official", "0^{+}_{m}", "0^{-}", "0 f_{a3} = 0.5", "0^{+}_{m} Old", "2^{+}_{m}"};
+  TString cutName[6] =     {"SM", "0PM", "0M", "Mix", "Old", "@BP"};
 
   
   char title[300];
@@ -56,7 +58,7 @@ void plot(int nsel = 0, int cem = 8){
   histo->GetYaxis()->SetTitle("m_{ll} [GeV]");
   histo->GetXaxis()->SetTitle("m_{T} [GeV]");
   labelcms->Draw();
-  if (cem == 8)  c1->SaveAs("plots/"+ cutLabel[nsel]+ "_8TeV.png");
-  else  c1->SaveAs("plots/"+ cutLabel[nsel]+ "_7TeV.png");
+  if (cem == 8)  c1->SaveAs("plots/"+cutName[nsel]+ "_8TeV.png");
+  else  c1->SaveAs("plots/"+ cutName[nsel]+ "_7TeV.png");
    
 }
