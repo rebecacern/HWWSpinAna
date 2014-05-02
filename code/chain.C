@@ -147,12 +147,15 @@ void chain(int nsel = 0, int cem = 8){
    
     if(sample.processId_ != 10010) continue;
     if ((fabs(sample.lep1McId_) == fabs(sample.lep2McId_))) continue;
+    if (sample.type_ != 1 && sample.type_ != 2 ) continue;
     if ((sample.cuts_ & SmurfTree::Lep1FullSelection) != SmurfTree::Lep1FullSelection || 
     (sample.cuts_ & SmurfTree::Lep2FullSelection) != SmurfTree::Lep2FullSelection) continue;  
     events++;
     
     double weight = 1;
-    if (sample.dstype_ != SmurfTree::data) weight = lumi*sample.scale1fb_*sample.sfWeightPU_*sample.sfWeightEff_*sample.sfWeightTrig_;
+    double factor = 1;
+    if (nsel == 0) factor = 1.028;
+    if (sample.dstype_ != SmurfTree::data) weight = lumi*sample.scale1fb_*sample.sfWeightPU_*sample.sfWeightEff_*sample.sfWeightTrig_*factor;
     
     histo_before_lep1pt->Fill(sample.lep1_.Pt(), weight);
     histo_before_lep2pt->Fill(sample.lep2_.Pt(), weight);
@@ -177,7 +180,17 @@ void chain(int nsel = 0, int cem = 8){
     if ((sample.cuts_ & SmurfTree::TopVeto) != SmurfTree::TopVeto) continue; 
     if (sample.mt_ <=30 || sample.mt_ >=280) continue;
     if (sample.mt_ <= 60 || sample.mt_ >= 280 || sample.dilep_.M() >= 200) continue;
-
+   
+    if(sample.event_ == 187563){
+     cout << "hello" << endl;
+     cout << sample.dilep_.M() << endl;
+     cout << sample.dilep_.Pt() << endl;
+     cout << sample.mt_ << endl;
+     cout << sample.njets_ << endl;
+     cout << sample.lep1_.Eta() << endl;
+     cout << sample.lep2_.Eta() << endl;
+     
+    }
     events_norm +=weight;
     histo_template->Fill(Unroll2VarTo1VarVersion2(sample.dilep_.M(), sample.mt_), weight);
     histo->Fill(sample.mt_, sample.dilep_.M(), weight);
@@ -190,7 +203,7 @@ void chain(int nsel = 0, int cem = 8){
     histo_ptll->Fill(sample.dilep_.Pt(), weight);
     histo_met->Fill(sample.met_, weight);
     histo_phill->Fill(fabs(sample.dPhi_*180/3.1415), weight);
-   // cout << sample.event_ << "\t" << sample.run_ << "\t" << sample.lumi_ << endl;
+    //cout << sample.event_ << "\t" << sample.run_ << "\t" << sample.lumi_ << endl;
 
   }
   
