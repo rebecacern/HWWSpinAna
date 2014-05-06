@@ -31,10 +31,12 @@ void plot(int nsel = 0, int cem = 8){
   else if (nsel == 3) {sprintf(plotName,"Mix");}
   else if (nsel == 4) {sprintf(plotName,"Old");}
   else if (nsel == 5) {sprintf(plotName,"2BP");}
+  else if (nsel == 6) {sprintf(plotName,"2HP");}
+  else if (nsel == 7) {sprintf(plotName,"2HM");}
 
   
-  TString cutLabel[6] =     {"SM 0^{+}_{m} Official", "0^{+}_{m}", "0^{-}", "0 f_{a3} = 0.5", "0^{+}_{m} Old", "2^{+}_{m}"};
-  TString cutName[6] =     {"SM", "0PM", "0M", "Mix", "Old", "@BP"};
+  TString cutLabel[8] =     {"SM 0^{+}_{m} Official", "0^{+}_{m}", "0^{-}", "f_{a3} = 0.5", "0^{+}_{m} Old", "2^{+}_{m}", "2^{+}_{h}", "2^{-}_{h}"};
+  TString cutName[8] =     {"SM", "0PM", "0M", "Mix", "Old", "2BP", "2HP", "2HM"};
 
   
   char title[300];
@@ -43,7 +45,7 @@ void plot(int nsel = 0, int cem = 8){
   sprintf(title,"histo_%s_%dTeV",plotName, cem);
   histo = (TH2D*) _file0->Get(title);
    
-  labelcms  = new TPaveText(0.15,0.8,0.75,0.85,"NDCBR");
+  labelcms  = new TPaveText(0.15,0.8,0.85,0.88,"NDCBR");
   labelcms->SetTextAlign(12);
   labelcms->SetTextSize(0.0435);
   labelcms->SetFillColor(kWhite);

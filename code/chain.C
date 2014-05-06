@@ -16,6 +16,8 @@ void chain(int nsel = 0, int cem = 8){
   else if (nsel == 3) {sprintf(plotName,"Mix"); sprintf(Message,"Mix JHU Gen");}
   else if (nsel == 4) {sprintf(plotName,"Old"); sprintf(Message,"Standard Model 125GeV JHU Gen old sample");}
   else if (nsel == 5) {sprintf(plotName,"2BP"); sprintf(Message,"graviton-like tensor with minimal couplings");}
+  else if (nsel == 6) {sprintf(plotName,"2HP"); sprintf(Message,"tensor with higher dimension operators");}
+  else if (nsel == 7) {sprintf(plotName,"2HM"); sprintf(Message,"tensor with higher dimension operators");}
   
   char myRootFile[300];
   double lumi = lumi8;
@@ -26,17 +28,16 @@ void chain(int nsel = 0, int cem = 8){
     else if (nsel == 3) sprintf(myRootFile,"/data/smurf/data/Run2012_Summer12_SmurfV9_53X/mitf-alljets_mva/ntuples2012_MultiClass_125train_0jets_xww125p6_x125ww4l-0mf05ph0-v19.root");
     else if (nsel == 4) sprintf(myRootFile,"/data/smurf/data/Run2012_Summer12_SmurfV9_53X/mitf-alljets/xww0p125.root");
     else if (nsel == 5) sprintf(myRootFile,"/data/smurf/data/Run2012_Summer12_SmurfV9_53X/mitf-alljets_mva/ntuples2012_MultiClass_125train_0jets_xww125p6_g125ww4l-2bp-v19.root");
+    else if (nsel == 6) sprintf(myRootFile,"/data/smurf/data/Run2012_Summer12_SmurfV9_53X/mitf-alljets_mva/ntuples2012_MultiClass_125train_0jets_xww125p6_g125ww4l-2hp-v19.root");
+    else if (nsel == 7) sprintf(myRootFile,"/data/smurf/data/Run2012_Summer12_SmurfV9_53X/mitf-alljets_mva/ntuples2012_MultiClass_125train_0jets_xww125p6_g125ww4l-2hm-v19.root");
+
  } else {
     lumi = lumi7;
     cout << endl;
     cout << "PLEASE UPDATE THE TUPLES" << endl;
     cout << endl;
-    if (nsel == 0) sprintf(myRootFile,"/data/smurf/data/Run2012_Summer12_SmurfV9_53X/mitf-alljets_mva/ntuples2012_MultiClass_125train_0jets_hww125.root");
-    else if (nsel == 1) sprintf(myRootFile,"/data/smurf/data/Run2012_Summer12_SmurfV9_53X/mitf-alljets_mva/ntuples2012_MultiClass_125train_0jets_xww125p6_x125ww4l-0pm-v19.root");
-    else if (nsel == 2) sprintf(myRootFile,"/data/smurf/data/Run2012_Summer12_SmurfV9_53X/mitf-alljets_mva/ntuples2012_MultiClass_125train_0jets_xww125p6_x125ww4l-0mt-v19.root");
-    else if (nsel == 3) sprintf(myRootFile,"/data/smurf/data/Run2012_Summer12_SmurfV9_53X/mitf-alljets_mva/ntuples2012_MultiClass_125train_0jets_xww125p6_x125ww4l-0mf05ph0-v19.root");
-    else if (nsel == 4) sprintf(myRootFile,"/data/smurf/data/Run2012_Summer12_SmurfV9_53X/mitf-alljets/xww0p125.root");
- }
+   
+  }
   
   //Load datasets
   

@@ -1,5 +1,5 @@
 #include "setTDRStyle.C"
-void plotScan1D(TString fname="1D_exp", TString ffolder="v1_output_proper", int option = 0){
+void plotScan1D(TString fname="1D_exp", TString ffolder="v1_output_oldjhu", int option = 0){
   plot(fname, ffolder, option);
 }
 
