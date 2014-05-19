@@ -1,5 +1,4 @@
- 
-#include "setTDRStyle.C"
+ #include "setTDRStyle.C"
  
 void plot(int nsel = 0, int cem = 8){
   
@@ -34,10 +33,11 @@ void plot(int nsel = 0, int cem = 8){
   else if (nsel == 6) {sprintf(plotName,"2HP");}
   else if (nsel == 7) {sprintf(plotName,"2HM");}
   else if (nsel == 8) {sprintf(plotName,"0PH");}
+  else if (nsel == 9) {sprintf(plotName,"2BP");}
 
   
-  TString cutLabel[9] =     {"SM 0^{+}_{m} Official", "0^{+}_{m}", "0^{-}", "f_{a3} = 0.5", "0^{+}_{m} Old", "2^{+}_{m}", "2^{+}_{h}", "2^{-}_{h}", "0^{+}_{h}"};
-  TString cutName[9] =     {"SM", "0PM", "0M", "Mix", "Old", "2BP", "2HP", "2HM",  "0PH"};
+  TString cutLabel[10] =     {"SM 0^{+}_{m} Official", "0^{+}_{m}", "0^{-}", "f_{a3} = 0.5", "0^{+}_{m} Old", "2^{+}_{m}", "2^{+}_{h}", "2^{-}_{h}", "0^{+}_{h}", "2^{+}_{b}"};
+  TString cutName[10] =     {"SM", "0PM", "0M", "Mix", "Old", "2PM", "2HP", "2HM",  "0PH", "2BP"};
 
   
   char title[300];

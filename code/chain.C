@@ -15,10 +15,11 @@ void chain(int nsel = 0, int cem = 8){
   else if (nsel == 2) {sprintf(plotName,"0M"); sprintf(Message,"Pseudoscalar JHU Gen");}
   else if (nsel == 3) {sprintf(plotName,"Mix"); sprintf(Message,"Mix JHU Gen");}
   else if (nsel == 4) {sprintf(plotName,"Old"); sprintf(Message,"Standard Model 125GeV JHU Gen old sample");}
-  else if (nsel == 5) {sprintf(plotName,"2BP"); sprintf(Message,"graviton-like tensor with minimal couplings");}
+  else if (nsel == 5) {sprintf(plotName,"2BP"); sprintf(Message,"2+b");}
   else if (nsel == 6) {sprintf(plotName,"2HP"); sprintf(Message,"tensor with higher dimension operators");}
   else if (nsel == 7) {sprintf(plotName,"2HM"); sprintf(Message,"pseudo-tensor");}
   else if (nsel == 8) {sprintf(plotName,"0PH"); sprintf(Message,"Scalar with higher-dimension operators");}
+  else if (nsel == 9) {sprintf(plotName,"2PM"); sprintf(Message,"2+min");}
   
   char myRootFile[300];
   double lumi = lumi8;
@@ -32,7 +33,7 @@ void chain(int nsel = 0, int cem = 8){
     else if (nsel == 6) sprintf(myRootFile,"/data/smurf/data/Run2012_Summer12_SmurfV9_53X/mitf-alljets_mva/ntuples2012_MultiClass_125train_0jets_xww125p6_g125ww4l-2hp-v19.root");
     else if (nsel == 7) sprintf(myRootFile,"/data/smurf/data/Run2012_Summer12_SmurfV9_53X/mitf-alljets_mva/ntuples2012_MultiClass_125train_0jets_xww125p6_g125ww4l-2hm-v19.root");
     else if (nsel == 8) sprintf(myRootFile,"/data/smurf/data/Run2012_Summer12_SmurfV9_53X/mitf-alljets_mva/ntuples2012_MultiClass_125train_0jets_xww125p6_x125ww4l-0ph-v19.root");
-
+    else if (nsel == 9) sprintf(myRootFile,"/data/smurf/data/Run2012_Summer12_SmurfV9_53X/mitf-alljets/xww2p125.root");
  
     
  } else {
