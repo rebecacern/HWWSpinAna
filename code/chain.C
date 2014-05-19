@@ -143,6 +143,7 @@ void chain(int nsel = 0, int cem = 8){
   //To business
   int nSample=sample.tree_->GetEntries();
   
+  bool showOnce = true;
   cout << nSample << endl;
   int events = 0;
   double events_norm = 0;
@@ -187,7 +188,7 @@ void chain(int nsel = 0, int cem = 8){
     if (sample.mt_ <= 60 || sample.mt_ >= 280 || sample.dilep_.M() >= 200) continue;
    
     if(sample.event_ == 187563){
-     cout << "hello" << endl;
+     cout << "Info of a paticular event" << endl;
      cout << sample.dilep_.M() << endl;
      cout << sample.dilep_.Pt() << endl;
      cout << sample.mt_ << endl;
@@ -196,6 +197,21 @@ void chain(int nsel = 0, int cem = 8){
      cout << sample.lep2_.Eta() << endl;
      
     }
+    
+    //gen info
+    if (showOnce){
+      cout << endl;
+      cout << "Reco leptons: (" << sample.lep1_.Pt() << ", " << sample.lep1_.Eta() << ") and (" << sample.lep2_.Pt() << ", " << sample.lep2_.Eta() << ")" << endl;
+      cout << endl;
+      cout << "Gen lep 1: " << sample.lep1McId_ << " (" << sample.genlep1_.Pt() << ", " << sample.genlep1_.Eta() << ")" << endl;
+      cout << "(" << sample.genlep1_.Px() << ", " << sample.genlep1_.Py() << ", " << sample.genlep1_.Pz() << ")" << endl;
+      cout << endl;
+      cout << "Gen lep 2: " << sample.lep2McId_ << " (" << sample.genlep2_.Pt() << ", " << sample.genlep2_.Eta() << ")" << endl;
+      cout << "(" << sample.genlep2_.Px() << ", " << sample.genlep2_.Py() << ", " << sample.genlep2_.Pz() << ")" << endl;
+      cout << endl;
+      showOnce = false;
+    }
+    
     events_norm +=weight;
     histo_template->Fill(Unroll2VarTo1VarVersion2(sample.dilep_.M(), sample.mt_), weight);
     histo->Fill(sample.mt_, sample.dilep_.M(), weight);
