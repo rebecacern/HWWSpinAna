@@ -33,10 +33,11 @@ void plot(int nsel = 0, int cem = 8){
   else if (nsel == 5) {sprintf(plotName,"2BP");}
   else if (nsel == 6) {sprintf(plotName,"2HP");}
   else if (nsel == 7) {sprintf(plotName,"2HM");}
+  else if (nsel == 8) {sprintf(plotName,"0PH");}
 
   
-  TString cutLabel[8] =     {"SM 0^{+}_{m} Official", "0^{+}_{m}", "0^{-}", "f_{a3} = 0.5", "0^{+}_{m} Old", "2^{+}_{m}", "2^{+}_{h}", "2^{-}_{h}"};
-  TString cutName[8] =     {"SM", "0PM", "0M", "Mix", "Old", "2BP", "2HP", "2HM"};
+  TString cutLabel[9] =     {"SM 0^{+}_{m} Official", "0^{+}_{m}", "0^{-}", "f_{a3} = 0.5", "0^{+}_{m} Old", "2^{+}_{m}", "2^{+}_{h}", "2^{-}_{h}", "0^{+}_{h}"};
+  TString cutName[9] =     {"SM", "0PM", "0M", "Mix", "Old", "2BP", "2HP", "2HM",  "0PH"};
 
   
   char title[300];
@@ -62,5 +63,7 @@ void plot(int nsel = 0, int cem = 8){
   labelcms->Draw();
   if (cem == 8)  c1->SaveAs("plots/"+cutName[nsel]+ "_8TeV.png");
   else  c1->SaveAs("plots/"+ cutName[nsel]+ "_7TeV.png");
+  if (cem == 8)  c1->SaveAs("plots/"+cutName[nsel]+ "_8TeV.pdf");
+  else  c1->SaveAs("plots/"+ cutName[nsel]+ "_7TeV.pdf");
    
 }

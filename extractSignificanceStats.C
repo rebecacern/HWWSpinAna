@@ -19,7 +19,7 @@
 #include "TArrow.h"
 #include "Math/DistFunc.h"
 
-int extractSignificanceStats( TString fInName = "qmu.root",  int iModel = 2 , bool unblind=false){
+int extractSignificanceStats( TString fInName = "rootfile_1.root",  int iModel = 2 , bool unblind=false){
 
   gStyle->SetPalette(1);
   gStyle->SetOptStat(0);
@@ -305,8 +305,8 @@ int extractSignificanceStats( TString fInName = "qmu.root",  int iModel = 2 , bo
     hPS->SetXTitle(" -2 ln(L_{0-}/L_{0+})");
     hSM->SetXTitle(" -2 ln(L_{0-}/L_{0+})");
   } else { 
-    hPS->SetXTitle(" -2 ln(L_{2+,min}/L_{0+})");
-    hSM->SetXTitle(" -2 ln(L_{2+,min}/L_{0+})");
+    hPS->SetXTitle(" -2 ln(L_{2+,h}/L_{0+})");
+    hSM->SetXTitle(" -2 ln(L_{2+,h}/L_{0+})");
   }
   hSM->SetLineColor(kMagenta-3);
   hSM->SetFillColor(kMagenta-3);

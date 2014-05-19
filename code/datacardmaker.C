@@ -19,10 +19,12 @@ void datacardmaker(bool regular = true){
   TString processName[np] =  { "qqbarH_ALT", "ggH_ALT", "ZH", "WH", "qqH", "ggH", "qqWW", "ggWW", "VV", "Top", "Zjets", "WjetsE", "Wgamma", "Wg3l", "Ztt", "WjetsM", "qqWW2j", "Data"};
  
   char rootFile[300];
-  //sprintf(rootFile,"../fa3/0m/hwwof_1j.input_8TeV.root");
- //sprintf(rootFile,"../fa3/0m/hwwof_1j.input_8TeV.root");
-  sprintf(rootFile,"../0m_proper/hwwof_1j.input_8TeV.root");
- 
+  char datacardFile[300]; 
+    
+  sprintf(rootFile,"../0ph/hwwof_1j.input_8TeV.root");
+  
+  if (regular) 	sprintf(datacardFile,"../0ph/hwwof_1j_8TeV.txt");
+  else 		sprintf(datacardFile,"../0ph/hwwof_1j_inter_8TeV.txt");
   
   TFile *_file0 = TFile::Open(rootFile);
   
@@ -31,16 +33,6 @@ void datacardmaker(bool regular = true){
     h[i] = (TH1F*) _file0->Get("histo_"+ processName[i]);
   }
  
-  char datacardFile[300]; 
-  
-  //if (regular) sprintf(datacardFile,"../fa3/0m/hwwof_1j_new.txt");
-  //else sprintf(datacardFile,"../fa3/0m/hwwof_1j_inter.txt");
-//  if (regular) sprintf(datacardFile,"../fa3/0m/hwwof_1j_new.txt");
- // else sprintf(datacardFile,"../fa3/0m/hwwof_1j_inter.txt");
-  if (regular) sprintf(datacardFile,"../0m_proper/hwwof_1j_new.txt");
-  else sprintf(datacardFile,"../0m_proper/hwwof_1j_inter.txt");
- 
-
   ofstream datacard(datacardFile); 
   
   datacard << "imax 1 number of channels" << endl;

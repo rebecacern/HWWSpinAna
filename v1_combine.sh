@@ -1,10 +1,10 @@
-FOLDER='v1_output_oldjhu'
+FOLDER='v1_0m_norm'
 
 echo "~** This script will run version 1, no interference term **~"
 	mkdir $FOLDER
 echo "[Info:] combine datacards of hww 0j"
  	rm hwwof_0j.txt
-	../HiggsAnalysis/CombinedLimit/scripts/combineCards.py oldjhu/hwwof_*new.txt > hwwof_0j.txt
+	../HiggsAnalysis/CombinedLimit/scripts/combineCards.py 0m_norm/hwwof_*new.txt > hwwof_0j.txt
 	
 echo "[Info:] building the workspace" 
 
