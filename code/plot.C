@@ -45,7 +45,7 @@ void plot(int nsel = 0, int cem = 8){
 
   	
   TString cutLabel[18] ={"SM 0^{+}_{m} Official", "0^{+}_{m}", "0^{-}", "f_{a3} = 0.5","0^{+}_{h}", "f_{a2} = 0.5",
-  				"fa_{a3} = f_{a2}=0.5", "#Lambda1", "f_{#Lambda1}=0.5", "Old JHU", "2^{+}_{b}", "2^{+)_{h}",
+  				"fa_{a3} = f_{a2}=0.5", "#Lambda1", "f_{#Lambda1}=0.5", "Old JHU", "2^{+}_{b}", "2^{+}_{h}",
 				"2^{-}_{h}", "2^{+}_{min}", "2^{+}_{h2}", "2^{+}_{h6}", "2^{-}_{h9}", "2^{-}_{h10}" };
   
   TString cutName[18] = { "SM", "0PM", "0M", "Mixfa3","0PH", "Mixfa2", "Mixfa2fa3", "L1", "MixL1", "Old", "2BP", "2HP",
