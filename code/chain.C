@@ -6,35 +6,56 @@
 
 void chain(int nsel = 0, int cem = 8){
   
-  char plotName[300], Message[300];
+  int jetbin =0;
+   
+  char plotName[300], Message[300], jetName[300], folderName[300];
   sprintf(plotName,"test");
   sprintf(Message,"test");
+  sprintf(jetName,"0jets");
+  if (jetbin == 1) sprintf(jetName,"1jets");
+  
+  sprintf(folderName,"/data/smurf/data/Run2012_Summer12_SmurfV9_53X/mitf-alljets_mva");
   
   if (nsel == 0) {sprintf(plotName,"SM"); sprintf(Message,"Standard Model 125GeV official legacy sample");}
   else if (nsel == 1) {sprintf(plotName,"0PM"); sprintf(Message,"Standard Model JHU Gen");}
   else if (nsel == 2) {sprintf(plotName,"0M"); sprintf(Message,"Pseudoscalar JHU Gen");}
-  else if (nsel == 3) {sprintf(plotName,"Mix"); sprintf(Message,"Mix JHU Gen");}
-  else if (nsel == 4) {sprintf(plotName,"Old"); sprintf(Message,"Standard Model 125GeV JHU Gen old sample");}
-  else if (nsel == 5) {sprintf(plotName,"2BP"); sprintf(Message,"2+b");}
-  else if (nsel == 6) {sprintf(plotName,"2HP"); sprintf(Message,"tensor with higher dimension operators");}
-  else if (nsel == 7) {sprintf(plotName,"2HM"); sprintf(Message,"pseudo-tensor");}
-  else if (nsel == 8) {sprintf(plotName,"0PH"); sprintf(Message,"Scalar with higher-dimension operators");}
-  else if (nsel == 9) {sprintf(plotName,"2PM"); sprintf(Message,"2+min");}
+  else if (nsel == 3) {sprintf(plotName,"Mixfa3"); sprintf(Message,"Mix fa3");}
+  else if (nsel == 4) {sprintf(plotName,"0PH"); sprintf(Message,"Scalar with Higher order corrections");}
+  else if (nsel == 5) {sprintf(plotName,"Mixfa2"); sprintf(Message,"Mix fa2");}
+  else if (nsel == 6) {sprintf(plotName,"Mixfa2fa3"); sprintf(Message,"Mix fa2, fa3");}
+  else if (nsel == 7) {sprintf(plotName,"L1"); sprintf(Message,"Lambda 1");}
+  else if (nsel == 8) {sprintf(plotName,"MixL1"); sprintf(Message,"Lambda 1 Mix");}
+  else if (nsel == 9) {sprintf(plotName,"Old"); sprintf(Message,"Standard Model 125GeV JHU Gen old sample");}
+  else if (nsel == 10) {sprintf(plotName,"2BP"); sprintf(Message,"2+b");}
+  else if (nsel == 11) {sprintf(plotName,"2HP"); sprintf(Message,"tensor with higher dimension operators");}
+  else if (nsel == 12) {sprintf(plotName,"2HM"); sprintf(Message,"pseudo-tensor");}
+  else if (nsel == 13) {sprintf(plotName,"2PM"); sprintf(Message,"2+min");}
+  else if (nsel == 14) {sprintf(plotName,"2PH2"); sprintf(Message,"2+h2");}
+  else if (nsel == 15) {sprintf(plotName,"2PH6"); sprintf(Message,"2+h6");}
+  else if (nsel == 16) {sprintf(plotName,"2MH9"); sprintf(Message,"2-h9");}
+  else if (nsel == 17) {sprintf(plotName,"2MH10"); sprintf(Message,"2-h10");}
   
   char myRootFile[300];
   double lumi = lumi8;
   if (cem == 8){
-    if (nsel == 0) sprintf(myRootFile,"/data/smurf/data/Run2012_Summer12_SmurfV9_53X/mitf-alljets_mva/ntuples2012_MultiClass_125train_0jets_hww125.root");
-    else if (nsel == 1) sprintf(myRootFile,"/data/smurf/data/Run2012_Summer12_SmurfV9_53X/mitf-alljets_mva/ntuples2012_MultiClass_125train_0jets_xww125p6_x125ww4l-0pm-v19.root");
-    else if (nsel == 2) sprintf(myRootFile,"/data/smurf/data/Run2012_Summer12_SmurfV9_53X/mitf-alljets_mva/ntuples2012_MultiClass_125train_0jets_xww125p6_x125ww4l-0mt-v19.root");
-    else if (nsel == 3) sprintf(myRootFile,"/data/smurf/data/Run2012_Summer12_SmurfV9_53X/mitf-alljets_mva/ntuples2012_MultiClass_125train_0jets_xww125p6_x125ww4l-0mf05ph0-v19.root");
-    else if (nsel == 4) sprintf(myRootFile,"/data/smurf/data/Run2012_Summer12_SmurfV9_53X/mitf-alljets/xww0p125.root");
-    else if (nsel == 5) sprintf(myRootFile,"/data/smurf/data/Run2012_Summer12_SmurfV9_53X/mitf-alljets_mva/ntuples2012_MultiClass_125train_0jets_xww125p6_g125ww4l-2bp-v19.root");
-    else if (nsel == 6) sprintf(myRootFile,"/data/smurf/data/Run2012_Summer12_SmurfV9_53X/mitf-alljets_mva/ntuples2012_MultiClass_125train_0jets_xww125p6_g125ww4l-2hp-v19.root");
-    else if (nsel == 7) sprintf(myRootFile,"/data/smurf/data/Run2012_Summer12_SmurfV9_53X/mitf-alljets_mva/ntuples2012_MultiClass_125train_0jets_xww125p6_g125ww4l-2hm-v19.root");
-    else if (nsel == 8) sprintf(myRootFile,"/data/smurf/data/Run2012_Summer12_SmurfV9_53X/mitf-alljets_mva/ntuples2012_MultiClass_125train_0jets_xww125p6_x125ww4l-0ph-v19.root");
-    else if (nsel == 9) sprintf(myRootFile,"/data/smurf/data/Run2012_Summer12_SmurfV9_53X/mitf-alljets/xww2p125.root");
- 
+    if (nsel == 0) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_%s_hww125.root", folderName,jetName);
+    else if (nsel == 1) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_%s_xww125p6_x125ww4l-0pm-v19.root", folderName,jetName);
+    else if (nsel == 2) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_%s_xww125p6_x125ww4l-0mt-v19.root", folderName, jetName);
+    else if (nsel == 3) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_%s_xww125p6_x125ww4l-0mf05ph0-v19.root", folderName, jetName);
+    else if (nsel == 4) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_%s_xww125p6_x125ww4l-0ph-v19.root", folderName, jetName);
+    else if (nsel == 5) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_%s_xww125p6_x125ww4l-0phf05ph0-v19.root", folderName, jetName); 
+    else if (nsel == 6) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_%s_xww125p6_x125ww4l-0phf05-v19.root", folderName, jetName); 
+    else if (nsel == 7) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_%s_xww125p6_x125ww4l-0l1-v19.root", folderName, jetName); 
+    else if (nsel == 8) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_%s_xww125p6_x125ww4l-0l1f05ph180-v19.root", folderName, jetName); 
+    else if (nsel == 9) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_%s_xww0p125.root", folderName, jetName);
+    else if (nsel == 10) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_%s_xww125p6_g125ww4l-2bp-v19.root", folderName, jetName); 
+    else if (nsel == 11) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_%s_xww125p6_g125ww4l-2hp-v19.root", folderName, jetName); 
+    else if (nsel == 12) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_%s_xww125p6_g125ww4l-2hm-v19.root", folderName, jetName); 
+    else if (nsel == 13) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_%s_xww2p125.root", folderName, jetName);
+    else if (nsel == 14) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_%s_xww125p6_g125ww4l-2ph2-v19.root", folderName, jetName); 
+    else if (nsel == 15) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_%s_xww125p6_g125ww4l-2ph6-v19.root", folderName, jetName); 
+    else if (nsel == 16) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_%s_xww125p6_g125ww4l-2mh9-v19.root", folderName, jetName); 
+    else if (nsel == 17) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_%s_xww125p6_g125ww4l-2mh10-v19.root", folderName, jetName); 
     
  } else {
     lumi = lumi7;

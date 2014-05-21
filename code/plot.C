@@ -27,18 +27,29 @@ void plot(int nsel = 0, int cem = 8){
   if (nsel == 0) {sprintf(plotName,"SM");}
   else if (nsel == 1) {sprintf(plotName,"0PM");}
   else if (nsel == 2) {sprintf(plotName,"0M");}
-  else if (nsel == 3) {sprintf(plotName,"Mix");}
-  else if (nsel == 4) {sprintf(plotName,"Old");}
-  else if (nsel == 5) {sprintf(plotName,"2BP");}
-  else if (nsel == 6) {sprintf(plotName,"2HP");}
-  else if (nsel == 7) {sprintf(plotName,"2HM");}
-  else if (nsel == 8) {sprintf(plotName,"0PH");}
-  else if (nsel == 9) {sprintf(plotName,"2BP");}
+  else if (nsel == 3) {sprintf(plotName,"Mixfa3");}
+  else if (nsel == 4) {sprintf(plotName,"0PH");}
+  else if (nsel == 5) {sprintf(plotName,"Mixfa2");}
+  else if (nsel == 6) {sprintf(plotName,"Mixfa2fa3");}
+  else if (nsel == 7) {sprintf(plotName,"L1");}
+  else if (nsel == 8) {sprintf(plotName,"MixL1");}
+  else if (nsel == 9) {sprintf(plotName,"Old");}
+  else if (nsel == 10) {sprintf(plotName,"2BP");}
+  else if (nsel == 11) {sprintf(plotName,"2HP");}
+  else if (nsel == 12) {sprintf(plotName,"2HM");}
+  else if (nsel == 13) {sprintf(plotName,"2PM");}
+  else if (nsel == 14) {sprintf(plotName,"2PH2");}
+  else if (nsel == 15) {sprintf(plotName,"2PH6");}
+  else if (nsel == 16) {sprintf(plotName,"2MH9");}
+  else if (nsel == 17) {sprintf(plotName,"2MH10");}
 
+  	
+  TString cutLabel[18] ={"SM 0^{+}_{m} Official", "0^{+}_{m}", "0^{-}", "f_{a3} = 0.5","0^{+}_{h}", "f_{a2} = 0.5",
+  				"fa_{a3} = f_{a2}=0.5", "#Lambda1", "f_{#Lambda1}=0.5", "Old JHU", "2^{+}_{b}", "2^{+)_{h}",
+				"2^{-}_{h}", "2^{+}_{min}", "2^{+}_{h2}", "2^{+}_{h6}", "2^{-}_{h9}", "2^{-}_{h10}" };
   
-  TString cutLabel[10] =     {"SM 0^{+}_{m} Official", "0^{+}_{m}", "0^{-}", "f_{a3} = 0.5", "0^{+}_{m} Old", "2^{+}_{m}", "2^{+}_{h}", "2^{-}_{h}", "0^{+}_{h}", "2^{+}_{b}"};
-  TString cutName[10] =     {"SM", "0PM", "0M", "Mix", "Old", "2PM", "2HP", "2HM",  "0PH", "2BP"};
-
+  TString cutName[18] = { "SM", "0PM", "0M", "Mixfa3","0PH", "Mixfa2", "Mixfa2fa3", "L1", "MixL1", "Old", "2BP", "2HP",
+  			"2HM", "2PM", "2PH2","2PH6", "2MH9","2MH10"};
   
   char title[300];
   TH2D* histo;
@@ -65,5 +76,5 @@ void plot(int nsel = 0, int cem = 8){
   else  c1->SaveAs("plots/"+ cutName[nsel]+ "_7TeV.png");
   if (cem == 8)  c1->SaveAs("plots/"+cutName[nsel]+ "_8TeV.pdf");
   else  c1->SaveAs("plots/"+ cutName[nsel]+ "_7TeV.pdf");
-   
+ 
 }
