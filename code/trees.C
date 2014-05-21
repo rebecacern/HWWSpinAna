@@ -81,6 +81,22 @@ void trees(int nsel = 1, int cem = 8, int jetbin = 0){
   double gen_met_pt;
   double gen_met_px;
   double gen_met_py;
+  
+  double l1_pt;
+  double l1_eta;
+  double l1_px;
+  double l1_py;
+  double l1_pz;
+  double l1_id;
+  
+  double l2_pt;
+  double l2_eta;
+  double l2_px;
+  double l2_py;
+  double l2_pz;
+  double l2_id;
+  
+  double met_pt;
     
   
   
@@ -108,6 +124,22 @@ void trees(int nsel = 1, int cem = 8, int jetbin = 0){
   myTree->Branch("gen_met_pt", &gen_met_pt, "gen_met_pt/D");
   myTree->Branch("gen_met_px", &gen_met_px, "gen_met_px/D");
   myTree->Branch("gen_met_py", &gen_met_py, "gen_met_py/D");
+  
+  myTree->Branch("l1_pt", &l1_pt, "l1_pt/D");
+  myTree->Branch("l1_eta", &l1_eta, "l1_eta/D");
+  myTree->Branch("l1_px", &l1_px, "l1_px/D");
+  myTree->Branch("l1_py", &l1_py, "l1_py/D");
+  myTree->Branch("l1_pz", &l1_pz, "l1_pz/D");
+  myTree->Branch("l1_id", &l1_id, "l1_id/D");
+  
+  myTree->Branch("l2_pt", &l2_pt, "l2_pt/D");
+  myTree->Branch("l2_eta", &l2_eta, "l2_eta/D");
+  myTree->Branch("l2_px", &l2_px, "l2_px/D");
+  myTree->Branch("l2_py", &l2_py, "l2_py/D");
+  myTree->Branch("l2_pz", &l2_pz, "l2_pz/D");
+  myTree->Branch("l2_id", &l2_id, "l2_id/D");
+  
+  myTree->Branch("met_pt", &met_pt, "met_pt/D");
   
   
   int nSample=sample.tree_->GetEntries();
@@ -169,6 +201,22 @@ void trees(int nsel = 1, int cem = 8, int jetbin = 0){
     gen_met_pt = sample.genmet_.Pt();
     gen_met_px = sample.genmet_.Px();
     gen_met_py = sample.genmet_.Py();
+    
+    l1_pt = sample.lep1_.Pt();
+    l1_eta = sample.lep1_.Eta();
+    l1_px = sample.lep1_.Px();
+    l1_py = sample.lep1_.Py();
+    l1_pz = sample.lep1_.Pz();
+    l1_id = sample.lep1McId_ ;
+    
+    l2_pt = sample.lep2_.Pt();
+    l2_eta = sample.lep2_.Eta();
+    l2_px = sample.lep2_.Px();
+    l2_py = sample.lep2_.Py();
+    l2_pz = sample.lep2_.Pz();
+    l2_id = sample.lep2McId_;
+    
+    met_pt = sample.met_;
     
     myTree->Fill();
     
