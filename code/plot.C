@@ -42,14 +42,19 @@ void plot(int nsel = 0, int cem = 8){
   else if (nsel == 15) {sprintf(plotName,"2PH6");}
   else if (nsel == 16) {sprintf(plotName,"2MH9");}
   else if (nsel == 17) {sprintf(plotName,"2MH10");}
+  else if (nsel == 18) {sprintf(plotName,"2PH3");}
+  else if (nsel == 19) {sprintf(plotName,"2PH7");}
+  else if (nsel == 20) {sprintf(plotName,"1P");}
+  else if (nsel == 21) {sprintf(plotName,"1M");}
 
   	
-  TString cutLabel[18] ={"SM 0^{+}_{m} Official", "0^{+}_{m}", "0^{-}", "f_{a3} = 0.5","0^{+}_{h}", "f_{a2} = 0.5",
-  				"fa_{a3} = f_{a2}=0.5", "#Lambda1", "f_{#Lambda1}=0.5", "Old JHU", "2^{+}_{b}", "2^{+}_{h}",
-				"2^{-}_{h}", "2^{+}_{min}", "2^{+}_{h2}", "2^{+}_{h6}", "2^{-}_{h9}", "2^{-}_{h10}" };
+  TString cutLabel[22] ={"SM 0^{+}_{m} Official", "0^{+}_{m}", "0^{-}", "f_{a3} = 0.5","0^{+}_{h}", "f_{a2} = 0.5",
+  				"fa_{a3} = f_{a2}=0.5", "0_{#Lambda1}", "f_{#Lambda1}=0.5", "Old JHU", "2^{+}_{b}", "2^{+}_{h}",
+				"2^{-}_{h}", "2^{+}_{min}", "2^{+}_{h2}", "2^{+}_{h6}", "2^{-}_{h9}", "2^{-}_{h10}",
+				"2^{+}_{h3}", "2^{+}_{h7}", "1^{+}", "1^{-}"};
   
-  TString cutName[18] = { "SM", "0PM", "0M", "Mixfa3","0PH", "Mixfa2", "Mixfa2fa3", "L1", "MixL1", "Old", "2BP", "2HP",
-  			"2HM", "2PM", "2PH2","2PH6", "2MH9","2MH10"};
+  TString cutName[22] = { "SM", "0PM", "0M", "Mixfa3","0PH", "Mixfa2", "Mixfa2fa3", "L1", "MixL1", "Old", "2BP", "2HP",
+  			"2HM", "2PM", "2PH2","2PH6", "2MH9","2MH10", "2PH3", "2PH7", "1P", "1M"};
   
   char title[300];
   TH2D* histo;

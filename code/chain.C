@@ -34,28 +34,37 @@ void chain(int nsel = 0, int cem = 8){
   else if (nsel == 15) {sprintf(plotName,"2PH6"); sprintf(Message,"2+h6");}
   else if (nsel == 16) {sprintf(plotName,"2MH9"); sprintf(Message,"2-h9");}
   else if (nsel == 17) {sprintf(plotName,"2MH10"); sprintf(Message,"2-h10");}
+  else if (nsel == 18) {sprintf(plotName,"2PH3"); sprintf(Message,"2+h3");}
+  else if (nsel == 19) {sprintf(plotName,"2PH7"); sprintf(Message,"2+h7");}
+  else if (nsel == 20) {sprintf(plotName,"1P"); sprintf(Message,"1+");}
+  else if (nsel == 21) {sprintf(plotName,"1M"); sprintf(Message,"1-");}
+  
   
   char myRootFile[300];
   double lumi = lumi8;
   if (cem == 8){
     if (nsel == 0) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_%s_hww125.root", folderName,jetName);
-    else if (nsel == 1) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_%s_xww125p6_x125ww4l-0pm-v19.root", folderName,jetName);
-    else if (nsel == 2) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_%s_xww125p6_x125ww4l-0mt-v19.root", folderName, jetName);
-    else if (nsel == 3) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_%s_xww125p6_x125ww4l-0mf05ph0-v19.root", folderName, jetName);
-    else if (nsel == 4) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_%s_xww125p6_x125ww4l-0ph-v19.root", folderName, jetName);
-    else if (nsel == 5) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_%s_xww125p6_x125ww4l-0phf05ph0-v19.root", folderName, jetName); 
-    else if (nsel == 6) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_%s_xww125p6_x125ww4l-0phf05-v19.root", folderName, jetName); 
-    else if (nsel == 7) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_%s_xww125p6_x125ww4l-0l1-v19.root", folderName, jetName); 
-    else if (nsel == 8) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_%s_xww125p6_x125ww4l-0l1f05ph180-v19.root", folderName, jetName); 
+    else if (nsel == 1) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_%s_xww125p6_s12-x125ww4l-0pm-v19.root", folderName,jetName);
+    else if (nsel == 2) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_%s_xww125p6_s12-x125ww4l-0mt-v19.root", folderName, jetName);
+    else if (nsel == 3) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_%s_xww125p6_s12-x125ww4l-0mf05ph0-v19.root", folderName, jetName);
+    else if (nsel == 4) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_%s_xww125p6_s12-x125ww4l-0ph-v19.root", folderName, jetName);
+    else if (nsel == 5) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_%s_xww125p6_s12-x125ww4l-0phf05ph0-v19.root", folderName, jetName); 
+    else if (nsel == 6) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_%s_xww125p6_s12-x125ww4l-0phf05-v19.root", folderName, jetName); 
+    else if (nsel == 7) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_%s_xww125p6_s12-x125ww4l-0l1-v19.root", folderName, jetName); 
+    else if (nsel == 8) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_%s_xww125p6_s12-x125ww4l-0l1f05ph180-v19.root", folderName, jetName); 
     else if (nsel == 9) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_%s_xww0p125.root", folderName, jetName);
-    else if (nsel == 10) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_%s_xww125p6_g125ww4l-2bp-v19.root", folderName, jetName); 
-    else if (nsel == 11) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_%s_xww125p6_g125ww4l-2hp-v19.root", folderName, jetName); 
-    else if (nsel == 12) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_%s_xww125p6_g125ww4l-2hm-v19.root", folderName, jetName); 
+    else if (nsel == 10) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_%s_xww125p6_s12-g125ww4l-2bp-v19.root", folderName, jetName); 
+    else if (nsel == 11) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_%s_xww125p6_s12-g125ww4l-2hp-v19.root", folderName, jetName); 
+    else if (nsel == 12) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_%s_xww125p6_s12-g125ww4l-2hm-v19.root", folderName, jetName); 
     else if (nsel == 13) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_%s_xww2p125.root", folderName, jetName);
-    else if (nsel == 14) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_%s_xww125p6_g125ww4l-2ph2-v19.root", folderName, jetName); 
-    else if (nsel == 15) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_%s_xww125p6_g125ww4l-2ph6-v19.root", folderName, jetName); 
-    else if (nsel == 16) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_%s_xww125p6_g125ww4l-2mh9-v19.root", folderName, jetName); 
-    else if (nsel == 17) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_%s_xww125p6_g125ww4l-2mh10-v19.root", folderName, jetName); 
+    else if (nsel == 14) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_%s_xww125p6_s12-g125ww4l-2ph2-v19.root", folderName, jetName); 
+    else if (nsel == 15) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_%s_xww125p6_s12-g125ww4l-2ph6-v19.root", folderName, jetName); 
+    else if (nsel == 16) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_%s_xww125p6_s12-g125ww4l-2mh9-v19.root", folderName, jetName); 
+    else if (nsel == 17) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_%s_xww125p6_s12-g125ww4l-2mh10-v19.root", folderName, jetName); 
+    else if (nsel == 18) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_%s_xww125p6_s12-g125ww4l-2ph3-v19.root", folderName, jetName); 
+    else if (nsel == 19) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_%s_xww125p6_s12-g125ww4l-2ph7-v19.root", folderName, jetName); 
+    else if (nsel == 20) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_%s_xww125p6_s12-v125ww4l-1p-v19.root", folderName, jetName); 
+    else if (nsel == 21) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_%s_xww125p6_s12-v125ww4l-1m-v19.root", folderName, jetName); 
     
  } else {
     lumi = lumi7;
@@ -165,7 +174,6 @@ void chain(int nsel = 0, int cem = 8){
   //To business
   int nSample=sample.tree_->GetEntries();
   
-  bool showOnce = true;
   cout << nSample << endl;
   int events = 0;
   double events_norm = 0;
@@ -173,7 +181,7 @@ void chain(int nsel = 0, int cem = 8){
     //   for (int i=0; i<10; ++i) {
     sample.tree_->GetEntry(i); 
    
-    if(sample.processId_ != 10010) continue;
+    if(sample.processId_ != 10010 && (nsel !=20 && nsel !=21)) continue;
     if ((fabs(sample.lep1McId_) == fabs(sample.lep2McId_))) continue;
     if (sample.type_ != 1 && sample.type_ != 2 ) continue;
     if ((sample.cuts_ & SmurfTree::Lep1FullSelection) != SmurfTree::Lep1FullSelection || 
@@ -208,31 +216,7 @@ void chain(int nsel = 0, int cem = 8){
     if ((sample.cuts_ & SmurfTree::TopVeto) != SmurfTree::TopVeto) continue; 
     if (sample.mt_ <=30 || sample.mt_ >=280) continue;
     if (sample.mt_ <= 60 || sample.mt_ >= 280 || sample.dilep_.M() >= 200) continue;
-   
-    if(sample.event_ == 187563){
-     cout << "Info of a paticular event" << endl;
-     cout << sample.dilep_.M() << endl;
-     cout << sample.dilep_.Pt() << endl;
-     cout << sample.mt_ << endl;
-     cout << sample.njets_ << endl;
-     cout << sample.lep1_.Eta() << endl;
-     cout << sample.lep2_.Eta() << endl;
-     
-    }
-    
-    //gen info
-    if (showOnce){
-      cout << endl;
-      cout << "Reco leptons: (" << sample.lep1_.Pt() << ", " << sample.lep1_.Eta() << ") and (" << sample.lep2_.Pt() << ", " << sample.lep2_.Eta() << ")" << endl;
-      cout << endl;
-      cout << "Gen lep 1: " << sample.lep1McId_ << " (" << sample.genlep1_.Pt() << ", " << sample.genlep1_.Eta() << ")" << endl;
-      cout << "(" << sample.genlep1_.Px() << ", " << sample.genlep1_.Py() << ", " << sample.genlep1_.Pz() << ")" << endl;
-      cout << endl;
-      cout << "Gen lep 2: " << sample.lep2McId_ << " (" << sample.genlep2_.Pt() << ", " << sample.genlep2_.Eta() << ")" << endl;
-      cout << "(" << sample.genlep2_.Px() << ", " << sample.genlep2_.Py() << ", " << sample.genlep2_.Pz() << ")" << endl;
-      cout << endl;
-      showOnce = false;
-    }
+  
     
     events_norm +=weight;
     histo_template->Fill(Unroll2VarTo1VarVersion2(sample.dilep_.M(), sample.mt_), weight);
