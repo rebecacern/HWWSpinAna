@@ -42,17 +42,22 @@ void compareplot(int nsel = 1, int cem = 8){
   else if (nsel == 19) {sprintf(plotName,"2PH7");}
   else if (nsel == 20) {sprintf(plotName,"1P");}
   else if (nsel == 21) {sprintf(plotName,"1M");}
+  else if (nsel == 22) {sprintf(plotName, "0PM_VBF");}
+  else if (nsel == 23) {sprintf(plotName, "0PM_WH");}
+  else if (nsel == 24) {sprintf(plotName, "0PM_ZH");}
+  else if (nsel == 25) {sprintf(plotName, "0PM_TTH");}
 
   	
-  TString properLabel[22] ={"SM 0^{+}_{m} Official", "0^{+}_{m}", "0^{-}", "f_{a3} = 0.5","0^{+}_{h}", "f_{a2} = 0.5",
+  TString properLabel[26] ={"SM 0^{+}_{m} Official", "0^{+}_{m}", "0^{-}", "f_{a3} = 0.5","0^{+}_{h}", "f_{a2} = 0.5",
   				"fa_{a3} = f_{a2}=0.5", "0_{#Lambda1}", "f_{#Lambda1}=0.5", "Old JHU", "2^{+}_{b}", "2^{+}_{h}",
 				"2^{-}_{h}", "2^{+}_{min}", "2^{+}_{h2}", "2^{+}_{h6}", "2^{-}_{h9}", "2^{-}_{h10}",
-				"2^{+}_{h3}", "2^{+}_{h7}", "1^{+}", "1^{-}"};
+				"2^{+}_{h3}", "2^{+}_{h7}", "1^{+}", "1^{-}", "VBF 0^{+}_{m}", "WH 0^{+}_{m}", "ZH 0^{+}_{m}", "ttH 0^{+}_{-}" };
   
-  TString sampleLabel[22] = { "SM", "0PM", "0M", "Mixfa3","0PH", "Mixfa2", "Mixfa2fa3", "L1", "MixL1", "Old", "2BP", "2HP",
-  			"2HM", "2PM", "2PH2","2PH6", "2MH9","2MH10", "2PH3", "2PH7", "1P", "1M"};
+  TString sampleLabel[26] = { "SM", "0PM", "0M", "Mixfa3","0PH", "Mixfa2", "Mixfa2fa3", "L1", "MixL1", "Old", "2BP", "2HP",
+  			"2HM", "2PM", "2PH2","2PH6", "2MH9","2MH10", "2PH3", "2PH7", "1P", "1M", "0PM_VBF", "0PM_WH", "0PM_ZH", "0PM_TTH"};
   
-  char myRootFile[300];
+  	
+   char myRootFile[300];
   sprintf(myRootFile,"rootfiles/test.root");
   
   TFile *_file0 = TFile::Open(myRootFile);
