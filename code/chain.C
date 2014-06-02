@@ -38,6 +38,10 @@ void chain(int nsel = 0, int cem = 8){
   else if (nsel == 19) {sprintf(plotName,"2PH7"); sprintf(Message,"2+h7");}
   else if (nsel == 20) {sprintf(plotName,"1P"); sprintf(Message,"1+");}
   else if (nsel == 21) {sprintf(plotName,"1M"); sprintf(Message,"1-");}
+  else if (nsel == 22) {sprintf(plotName, "0PM_VBF"); sprintf(Message, "SM, VBF");}
+  else if (nsel == 23) {sprintf(plotName, "0PM_WH"); sprintf(Message, "SM, WH");}
+  else if (nsel == 24) {sprintf(plotName, "0PM_ZH"); sprintf(Message, "SM, ZH");}
+  else if (nsel == 25) {sprintf(plotName, "0PM_TTH"); sprintf(Message, "SM, ttH");}
   
   
   char myRootFile[300];
@@ -65,6 +69,7 @@ void chain(int nsel = 0, int cem = 8){
     else if (nsel == 19) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_%s_xww125p6_s12-g125ww4l-2ph7-v19.root", folderName, jetName); 
     else if (nsel == 20) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_%s_xww125p6_s12-v125ww4l-1p-v19.root", folderName, jetName); 
     else if (nsel == 21) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_%s_xww125p6_s12-v125ww4l-1m-v19.root", folderName, jetName); 
+    else if (nsel == 22 || nsel == 23 || nsel == 24 || nsel ==25) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_%s_xww125p6_s12-0ph.root", folderName, jetName);
     
  } else {
     lumi = lumi7;
@@ -180,8 +185,12 @@ void chain(int nsel = 0, int cem = 8){
   for (int i=0; i<nSample; ++i) {
     //   for (int i=0; i<10; ++i) {
     sample.tree_->GetEntry(i); 
-   
-    if(sample.processId_ != 10010 && (nsel !=20 && nsel !=21)) continue;
+  
+    if(sample.processId_ != 10010 && (nsel < 20)) continue;
+    if (sample.processId_ != 10001 && nsel == 22) continue;
+    if (sample.processId_ != 26 && nsel == 23) continue;
+    if (sample.processId_ != 24 && nsel == 24) continue;
+    if ((sample.processId_ != 121 || sample.processId_ !=122) && nsel == 25) continue;
     if ((fabs(sample.lep1McId_) == fabs(sample.lep2McId_))) continue;
     if (sample.type_ != 1 && sample.type_ != 2 ) continue;
     if ((sample.cuts_ & SmurfTree::Lep1FullSelection) != SmurfTree::Lep1FullSelection || 
