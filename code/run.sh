@@ -3,6 +3,7 @@ echo "Removing the previous rootfile"
 rm rootfiles/test.root
 rm plots/*
 
+
 echo "Running templates"
 
 # center of mass energy
