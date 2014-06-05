@@ -42,7 +42,15 @@ void chain(int nsel = 0, int cem = 8){
   else if (nsel == 23) {sprintf(plotName, "0PM_WH"); sprintf(Message, "SM, WH");}
   else if (nsel == 24) {sprintf(plotName, "0PM_ZH"); sprintf(Message, "SM, ZH");}
   else if (nsel == 25) {sprintf(plotName, "0PM_TTH"); sprintf(Message, "SM, ttH");}
-  
+  else if (nsel == 26) {sprintf(plotName, "0M_VBF"); sprintf(Message, "0M, VBF");}
+  else if (nsel == 27) {sprintf(plotName, "0M_WH"); sprintf(Message, "0M, WH");}
+  else if (nsel == 28) {sprintf(plotName, "0M_ZH"); sprintf(Message, "0M, ZH");}
+  else if (nsel == 29) {sprintf(plotName, "0M_TTH"); sprintf(Message, "0M, ttH");}
+  else if (nsel == 30) {sprintf(plotName, "0PH_VBF"); sprintf(Message, "0PH, VBF");}
+  else if (nsel == 31) {sprintf(plotName, "0PH_WH"); sprintf(Message, "0PH, WH");}
+  else if (nsel == 32) {sprintf(plotName, "0PH_ZH"); sprintf(Message, "0PH, ZH");}
+  else if (nsel == 33) {sprintf(plotName, "0PH_TTH"); sprintf(Message, "0PH, ttH");}
+
   
   char myRootFile[300];
   double lumi = lumi8;
@@ -69,7 +77,9 @@ void chain(int nsel = 0, int cem = 8){
     else if (nsel == 19) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_%s_xww125p6_s12-g125ww4l-2ph7-v19.root", folderName, jetName); 
     else if (nsel == 20) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_%s_xww125p6_s12-v125ww4l-1p-v19.root", folderName, jetName); 
     else if (nsel == 21) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_%s_xww125p6_s12-v125ww4l-1m-v19.root", folderName, jetName); 
-    else if (nsel == 22 || nsel == 23 || nsel == 24 || nsel ==25) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_%s_xww125p6_s12-0ph.root", folderName, jetName);
+    else if (nsel == 22 || nsel == 23 || nsel == 24 || nsel ==25) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_0jets_xww125p6_s12-0p.root", folderName);
+    else if (nsel == 26 || nsel == 27 || nsel == 28 || nsel ==29) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_0jets_xww125p6_s12-0m.root", folderName);
+    else if (nsel == 30 || nsel == 31 || nsel == 32 || nsel ==33) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_0jets_xww125p6_s12-0ph.root", folderName);
     
  } else {
     lumi = lumi7;
@@ -187,10 +197,10 @@ void chain(int nsel = 0, int cem = 8){
     sample.tree_->GetEntry(i); 
   
     if(sample.processId_ != 10010 && (nsel < 20)) continue;
-    if (sample.processId_ != 10001 && nsel == 22) continue;
-    if (sample.processId_ != 26 && nsel == 23) continue;
-    if (sample.processId_ != 24 && nsel == 24) continue;
-    if ((sample.processId_ != 121 || sample.processId_ !=122) && nsel == 25) continue;
+    if (sample.processId_ != 10001 && (nsel == 22 || nsel == 26 || nsel == 30)) continue;
+    if (sample.processId_ != 26 && (nsel == 23 || nsel == 27 || nsel == 31)) continue;
+    if (sample.processId_ != 24 && (nsel == 24 || nsel == 28 || nsel == 32)) continue;
+    if ((sample.processId_ != 121 || sample.processId_ !=122) && (nsel == 25 || nsel == 29 || nsel == 33)) continue;
     if ((fabs(sample.lep1McId_) == fabs(sample.lep2McId_))) continue;
     if (sample.type_ != 1 && sample.type_ != 2 ) continue;
     if ((sample.cuts_ & SmurfTree::Lep1FullSelection) != SmurfTree::Lep1FullSelection || 

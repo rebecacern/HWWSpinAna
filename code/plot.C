@@ -50,15 +50,30 @@ void plot(int nsel = 0, int cem = 8){
   else if (nsel == 23) {sprintf(plotName, "0PM_WH");}
   else if (nsel == 24) {sprintf(plotName, "0PM_ZH");}
   else if (nsel == 25) {sprintf(plotName, "0PM_TTH");}
+  else if (nsel == 22) {sprintf(plotName, "0PM_VBF");}
+  else if (nsel == 23) {sprintf(plotName, "0PM_WH");}
+  else if (nsel == 24) {sprintf(plotName, "0PM_ZH");}
+  else if (nsel == 25) {sprintf(plotName, "0PM_TTH");}
+  else if (nsel == 26) {sprintf(plotName, "0M_VBF");}
+  else if (nsel == 27) {sprintf(plotName, "0M_WH");}
+  else if (nsel == 28) {sprintf(plotName, "0M_ZH");}
+  else if (nsel == 29) {sprintf(plotName, "0M_TTH");}
+  else if (nsel == 30) {sprintf(plotName, "0PH_VBF");}
+  else if (nsel == 31) {sprintf(plotName, "0PH_WH");}
+  else if (nsel == 32) {sprintf(plotName, "0PH_ZH");}
+  else if (nsel == 33) {sprintf(plotName, "0PH_TTH");}
+
 
   	
-  TString cutLabel[26] ={"SM 0^{+}_{m} Official", "0^{+}_{m}", "0^{-}", "f_{a3} = 0.5","0^{+}_{h}", "f_{a2} = 0.5",
+  TString cutLabel[34] ={"SM 0^{+}_{m} Official", "0^{+}_{m}", "0^{-}", "f_{a3} = 0.5","0^{+}_{h}", "f_{a2} = 0.5",
   				"fa_{a3} = f_{a2}=0.5", "0_{#Lambda1}", "f_{#Lambda1}=0.5", "Old JHU", "2^{+}_{b}", "2^{+}_{h}",
 				"2^{-}_{h}", "2^{+}_{min}", "2^{+}_{h2}", "2^{+}_{h6}", "2^{-}_{h9}", "2^{-}_{h10}",
-				"2^{+}_{h3}", "2^{+}_{h7}", "1^{+}", "1^{-}", "VBF 0^{+}_{m}", "WH 0^{+}_{m}", "ZH 0^{+}_{m}", "ttH 0^{+}_{-}" };
+				"2^{+}_{h3}", "2^{+}_{h7}", "1^{+}", "1^{-}", "VBF 0^{+}_{m}", "WH 0^{+}_{m}", "ZH 0^{+}_{m}", "ttH 0^{+}_{m}",
+				"VBF 0^{-}", "WH 0^{-}", "ZH 0^{-}", "ttH 0^{-}", "VBF 0^{+}_{h}", "WH 0^{+}_{h}", "ZH 0^{+}_{h}", "ttH 0^{+}_{h}" };
   
-  TString cutName[26] = { "SM", "0PM", "0M", "Mixfa3","0PH", "Mixfa2", "Mixfa2fa3", "L1", "MixL1", "Old", "2BP", "2HP",
-  			"2HM", "2PM", "2PH2","2PH6", "2MH9","2MH10", "2PH3", "2PH7", "1P", "1M", "0PM_VBF", "0PM_WH", "0PM_ZH", "0PM_TTH"};
+  TString cutName[34] = { "SM", "0PM", "0M", "Mixfa3","0PH", "Mixfa2", "Mixfa2fa3", "L1", "MixL1", "Old", "2BP", "2HP",
+  			"2HM", "2PM", "2PH2","2PH6", "2MH9","2MH10", "2PH3", "2PH7", "1P", "1M", "0PM_VBF", "0PM_WH", "0PM_ZH", "0PM_TTH",
+			"0M_VBF", "OM_WH", "0M_ZH", "0M_TTH", "0PH_VBF", "0PH_WH", "0PH_ZH", "0PH_TTH"};
   
   char title[300];
   TH2D* histo;
