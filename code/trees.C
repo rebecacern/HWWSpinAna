@@ -93,9 +93,35 @@ void trees(int nsel = 0, int cem = 8, int jetbin = 0){
     else if (nsel == 34 || nsel == 35 || nsel == 36 || nsel ==37) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_0jets_xww125p6_s12-0ph.root", folderName);
   } else {
     lumi = lumi7;
+    sprintf(folderName,"/data/smurf/data/Run2011_Fall11_SmurfV9_42X/mitf-alljets_mva");
     cout << endl;
-    cout << "PLEASE UPDATE THE TUPLES" << endl;
-    cout << endl;  
+    if (nsel == 0) sprintf(myRootFile,"%s/ntuples_126train_%s_hww124.root", folderName,jetName);
+    else if (nsel == 1) sprintf(myRootFile,"%s/ntuples_126train_%s_xww125p6_x125ww4l-0pm.root", folderName,jetName);
+    else if (nsel == 2) sprintf(myRootFile,"%s/ntuples_126train_%s_xww125p6_x125ww4l-0mt.root", folderName, jetName);
+    else if (nsel == 3) sprintf(myRootFile,"%s/ntuples_126train_%s_xww125p6-0mf05ph0.root", folderName, jetName);
+    else if (nsel == 4) sprintf(myRootFile,"%s/ntuples_126train_%s_xww125p6_x125ww4l-0ph.root", folderName, jetName);
+    else if (nsel == 5) sprintf(myRootFile,"%s/ntuples_126train_%s_xww125p6_x125ww4l-0phf05ph0.root", folderName, jetName); 
+    else if (nsel == 6) sprintf(myRootFile,"%s/ntuples_126train_%s_xww125p6_x125ww4l-0phf05.root", folderName, jetName); 
+    else if (nsel == 7) sprintf(myRootFile,"%s/ntuples_126train_%s_xww125p6_x125ww4l-0l1.root", folderName, jetName); 
+    else if (nsel == 8) sprintf(myRootFile,"%s/ntuples_126train_%s_xww125p6_x125ww4l-0l1f05ph180.root", folderName, jetName); 
+    else if (nsel == 9) sprintf(myRootFile,"%s/ntuples_126train_%s_xww0p125.root", folderName, jetName);
+    else if (nsel == 10) sprintf(myRootFile,"%s/ntuples_126train_%s_xww125p6_x125ww4l-2bp.root", folderName, jetName); 
+    else if (nsel == 11) sprintf(myRootFile,"%s/ntuples_126train_%s_xww125p6_x125ww4l-2hp.root", folderName, jetName); 
+    else if (nsel == 12) sprintf(myRootFile,"%s/ntuples_126train_%s_xww125p6_x125ww4l-2hm.root", folderName, jetName); 
+    else if (nsel == 13) sprintf(myRootFile,"%s/ntuples_126train_%s_xww2p125.root", folderName, jetName);
+    else if (nsel == 14) sprintf(myRootFile,"%s/ntuples_126train_%s_xww125p6_x125ww4l-2ph2.root", folderName, jetName); 
+    else if (nsel == 15) sprintf(myRootFile,"%s/ntuples_126train_%s_xww125p6_x125ww4l-2ph6.root", folderName, jetName); 
+    else if (nsel == 16) sprintf(myRootFile,"%s/ntuples_126train_%s_xww125p6_x125ww4l-2mh9.root", folderName, jetName); 
+    else if (nsel == 17) sprintf(myRootFile,"%s/ntuples_126train_%s_xww125p6_x125ww4l-2mh10.root", folderName, jetName); 
+    else if (nsel == 18) sprintf(myRootFile,"%s/ntuples_126train_%s_xww125p6_x125ww4l-2ph3.root", folderName, jetName); 
+    else if (nsel == 19) sprintf(myRootFile,"%s/ntuples_126train_%s_xww125p6_x125ww4l-2ph7.root", folderName, jetName); 
+    else if (nsel == 20) sprintf(myRootFile,"%s/ntuples_126train_%s_xww125p6_s12-v125ww4l-1p.root", folderName, jetName); 
+    else if (nsel == 21) sprintf(myRootFile,"%s/ntuples_126train_%s_xww125p6_s12-v125ww4l-1m.root", folderName, jetName); 
+    else if (nsel == 22 || nsel == 23 || nsel == 24 || nsel ==25) sprintf(myRootFile,"%s/ntuples_126train_0jets_xww125p6_s12-0p.root", folderName);
+    else if (nsel == 26 || nsel == 27 || nsel == 28 || nsel ==29) sprintf(myRootFile,"%s/ntuples_126train_0jets_xww125p6_s12-0m.root", folderName);
+    else if (nsel == 30 || nsel == 31 || nsel == 32 || nsel ==33) sprintf(myRootFile,"%s/ntuples_126train_0jets_xww125p6_s12-0mf05ph0.root", folderName);
+    else if (nsel == 34 || nsel == 35 || nsel == 36 || nsel ==37) sprintf(myRootFile,"%s/ntuples_126train_0jets_xww125p6_s12-0ph.root", folderName);
+
   }
   
   //Load datasets
@@ -109,7 +135,8 @@ void trees(int nsel = 0, int cem = 8, int jetbin = 0){
   // Create rootfiles with final-level trees
   if (jetbin == 1) sprintf(jetName,"1jets");
   char rootFile[300];
-  sprintf(rootFile,"trees/final_tree_%s_%s.root", plotName, jetName);
+  sprintf(rootFile,"trees/final_tree_8TeV_%s_%s.root", plotName, jetName);
+  if (cem==7) sprintf(rootFile,"trees/final_tree_7TeV_%s_%s.root", plotName, jetName);
   
   TFile f_root(rootFile, "RECREATE");
  
