@@ -4,7 +4,7 @@
 #include "inputs.h"
 
 
-void trees(int nsel = 0, int cem = 8, int jetbin = 0){
+void trees(int nsel = 35, int cem = 7, int jetbin = 0){
   
   char plotName[300], Message[300], jetName[300], folderName[300];
   sprintf(plotName,"test");
@@ -90,14 +90,14 @@ void trees(int nsel = 0, int cem = 8, int jetbin = 0){
     else if (nsel == 22 || nsel == 23 || nsel == 24 || nsel ==25) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_0jets_xww125p6_s12-0p.root", folderName);
     else if (nsel == 26 || nsel == 27 || nsel == 28 || nsel ==29) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_0jets_xww125p6_s12-0m.root", folderName);
     else if (nsel == 30 || nsel == 31 || nsel == 32 || nsel ==33) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_0jets_xww125p6_s12-0mf05ph0.root", folderName);
-    else if (nsel == 34 || nsel == 35 || nsel == 36 || nsel ==37) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_0jets_xww125p6_s12-0ph.root", folderName);
+    else if (nsel == 34 || nsel == 35 || nsel == 36 || nsel ==37) sprintf(myRootFile,"%s/ntuples2012_MultiClass_125train_0jets_xww125p6_s12-x125ww4l-0phf05ph0-v19.root", folderName);
   } else {
     lumi = lumi7;
     sprintf(folderName,"/data/smurf/data/Run2011_Fall11_SmurfV9_42X/mitf-alljets_mva");
     cout << endl;
     if (nsel == 0) sprintf(myRootFile,"%s/ntuples_126train_%s_hww124.root", folderName,jetName);
     else if (nsel == 1) sprintf(myRootFile,"%s/ntuples_126train_%s_xww125p6_x125ww4l-0pm.root", folderName,jetName);
-    else if (nsel == 2) sprintf(myRootFile,"%s/ntuples_126train_%s_xww125p6_x125ww4l-0mt.root", folderName, jetName);
+    else if (nsel == 2) sprintf(myRootFile,"%s/ntuples_126train_%s_xww125p6-0m.root", folderName, jetName);
     else if (nsel == 3) sprintf(myRootFile,"%s/ntuples_126train_%s_xww125p6-0mf05ph0.root", folderName, jetName);
     else if (nsel == 4) sprintf(myRootFile,"%s/ntuples_126train_%s_xww125p6_x125ww4l-0ph.root", folderName, jetName);
     else if (nsel == 5) sprintf(myRootFile,"%s/ntuples_126train_%s_xww125p6_x125ww4l-0phf05ph0.root", folderName, jetName); 
@@ -105,11 +105,11 @@ void trees(int nsel = 0, int cem = 8, int jetbin = 0){
     else if (nsel == 7) sprintf(myRootFile,"%s/ntuples_126train_%s_xww125p6_x125ww4l-0l1.root", folderName, jetName); 
     else if (nsel == 8) sprintf(myRootFile,"%s/ntuples_126train_%s_xww125p6_x125ww4l-0l1f05ph180.root", folderName, jetName); 
     else if (nsel == 9) sprintf(myRootFile,"%s/ntuples_126train_%s_xww0p125.root", folderName, jetName);
-    else if (nsel == 10) sprintf(myRootFile,"%s/ntuples_126train_%s_xww125p6_x125ww4l-2bp.root", folderName, jetName); 
-    else if (nsel == 11) sprintf(myRootFile,"%s/ntuples_126train_%s_xww125p6_x125ww4l-2hp.root", folderName, jetName); 
-    else if (nsel == 12) sprintf(myRootFile,"%s/ntuples_126train_%s_xww125p6_x125ww4l-2hm.root", folderName, jetName); 
+    else if (nsel == 10) sprintf(myRootFile,"%s/ntuples_126train_%s_xww125p6_2bp.root", folderName, jetName); 
+    else if (nsel == 11) sprintf(myRootFile,"%s/ntuples_126train_%s_xww125p6_2hp.root", folderName, jetName); 
+    else if (nsel == 12) sprintf(myRootFile,"%s/ntuples_126train_%s_xww125p6_2hm.root", folderName, jetName); 
     else if (nsel == 13) sprintf(myRootFile,"%s/ntuples_126train_%s_xww2p125.root", folderName, jetName);
-    else if (nsel == 14) sprintf(myRootFile,"%s/ntuples_126train_%s_xww125p6_x125ww4l-2ph2.root", folderName, jetName); 
+    else if (nsel == 14) sprintf(myRootFile,"%s/ntuples_126train_%s_xww125p6_2ph2.root", folderName, jetName); 
     else if (nsel == 15) sprintf(myRootFile,"%s/ntuples_126train_%s_xww125p6_x125ww4l-2ph6.root", folderName, jetName); 
     else if (nsel == 16) sprintf(myRootFile,"%s/ntuples_126train_%s_xww125p6_x125ww4l-2mh9.root", folderName, jetName); 
     else if (nsel == 17) sprintf(myRootFile,"%s/ntuples_126train_%s_xww125p6_x125ww4l-2mh10.root", folderName, jetName); 
@@ -117,10 +117,11 @@ void trees(int nsel = 0, int cem = 8, int jetbin = 0){
     else if (nsel == 19) sprintf(myRootFile,"%s/ntuples_126train_%s_xww125p6_x125ww4l-2ph7.root", folderName, jetName); 
     else if (nsel == 20) sprintf(myRootFile,"%s/ntuples_126train_%s_xww125p6_s12-v125ww4l-1p.root", folderName, jetName); 
     else if (nsel == 21) sprintf(myRootFile,"%s/ntuples_126train_%s_xww125p6_s12-v125ww4l-1m.root", folderName, jetName); 
-    else if (nsel == 22 || nsel == 23 || nsel == 24 || nsel ==25) sprintf(myRootFile,"%s/ntuples_126train_0jets_xww125p6_s12-0p.root", folderName);
-    else if (nsel == 26 || nsel == 27 || nsel == 28 || nsel ==29) sprintf(myRootFile,"%s/ntuples_126train_0jets_xww125p6_s12-0m.root", folderName);
-    else if (nsel == 30 || nsel == 31 || nsel == 32 || nsel ==33) sprintf(myRootFile,"%s/ntuples_126train_0jets_xww125p6_s12-0mf05ph0.root", folderName);
-    else if (nsel == 34 || nsel == 35 || nsel == 36 || nsel ==37) sprintf(myRootFile,"%s/ntuples_126train_0jets_xww125p6_s12-0ph.root", folderName);
+    else if (nsel == 22 || nsel == 23 || nsel == 24 || nsel ==25) sprintf(myRootFile,"%s/ntuples_126train_0jets_xww125p6-0p.root", folderName);
+    else if (nsel == 26 || nsel == 27 || nsel == 28 || nsel ==29) sprintf(myRootFile,"%s/ntuples_126train_0jets_xww125p6-0m.root", folderName);
+    else if (nsel == 30 || nsel == 31 || nsel == 32 || nsel ==33) sprintf(myRootFile,"%s/ntuples_126train_0jets_xww125p6-0mf05ph0.root", folderName);
+    else if (nsel == 34 || nsel == 35 || nsel == 36 || nsel ==37) sprintf(myRootFile,"%s/ntuples_126train_0jets_xww125p6-0ph.root", folderName);
+    else if (nsel == 38 || nsel == 39 || nsel == 40 || nsel ==41) sprintf(myRootFile,"%s/ntuples_126train_0jets_xww125p6-0phf05ph0.root", folderName);
 
   }
   
@@ -268,12 +269,13 @@ void trees(int nsel = 0, int cem = 8, int jetbin = 0){
  
   cout << nSample << " events in the ntuple" << endl;
   int events = 0;
+  double events_raw= 0;
   double events_norm = 0;
   for (int i=0; i<nSample; ++i) {
     //   for (int i=0; i<10; ++i) {
     sample.tree_->GetEntry(i); 
-    
-    if(sample.processId_ != 10010 && (nsel < 20)) continue;
+   //   if(sample.processId_ != 10010) cout << sample.processId_ << endl;
+    if(sample.processId_ != 10010 && (nsel < 20)) continue;    
     if (sample.processId_ != 10001 && (nsel == 22 || nsel == 26 || nsel == 30 || nsel == 34 || nsel == 38)) continue;
     if (sample.processId_ != 26 && (nsel == 23 || nsel == 27 || nsel == 31 || nsel == 35 || nsel == 39)) continue;
     if (sample.processId_ != 24 && (nsel == 24 || nsel == 28 || nsel == 32 || nsel == 36 || nsel == 40)) continue;
@@ -283,7 +285,7 @@ void trees(int nsel = 0, int cem = 8, int jetbin = 0){
     if ((sample.cuts_ & SmurfTree::Lep1FullSelection) != SmurfTree::Lep1FullSelection || 
 	(sample.cuts_ & SmurfTree::Lep2FullSelection) != SmurfTree::Lep2FullSelection) continue;  
     events++;
-    
+
     double weight = 1;
   
     if (sample.dstype_ != SmurfTree::data) weight = lumi*sample.scale1fb_*sample.sfWeightPU_*sample.sfWeightEff_*sample.sfWeightTrig_;
@@ -303,7 +305,7 @@ void trees(int nsel = 0, int cem = 8, int jetbin = 0){
     if (sample.mt_ <=30 || sample.mt_ >=280) continue;
     if (sample.mt_ <= 60 || sample.mt_ >= 280 || sample.dilep_.M() >= 200) continue;
     
-
+events_raw++;
     events_norm +=weight;
     
     event_weight = weight;
@@ -371,7 +373,7 @@ void trees(int nsel = 0, int cem = 8, int jetbin = 0){
   }
   
   cout << "Events used: " << events << endl;
-  cout << "Final yield: " << events_norm << endl;
+  cout << "Final yield: " << events_norm << " (" << events_raw << ")" << endl;
   
   f_root.Write();
   f_root.Close();

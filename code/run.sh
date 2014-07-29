@@ -1,7 +1,7 @@
 echo "Removing the previous rootfile"
 
 rm rootfiles/test.root
-rm plots/*
+#rm plots/*
 
 
 echo "Running templates"
